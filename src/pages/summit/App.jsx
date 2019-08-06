@@ -12,6 +12,7 @@ import { Map, Marker, InfoWindow } from 'react-amap';
 
 import './index.less';
 import LOGO from '@img/logo.jpg';
+import Title from '@components/Title/';
 
 const navs = [
   {
@@ -69,8 +70,8 @@ class Home extends Component {
 class About extends Component {
   render() {
     return (
-      <div className="about-container" id="about" style={{ background: 'lightblue', height: 1000 }}>
-        this is About.
+      <div className="about-container full-screen-container" id="about" style={{ background: 'lightblue', height: 1000 }}>
+        <Title title={this.constructor.name} />
       </div>
     );
   }
@@ -79,8 +80,8 @@ class About extends Component {
 class Speakers extends Component {
   render() {
     return (
-      <div className="speakers-container" id="speakers" style={{ background: 'lightgray', height: 1000 }}>
-        this is Speakers.
+      <div className="speakers-container full-screen-container" id="speakers" style={{ background: 'lightgray', height: 1000 }}>
+        <Title title={this.constructor.name} />
       </div>
     );
   }
@@ -89,8 +90,8 @@ class Speakers extends Component {
 class Agenda extends Component {
   render() {
     return (
-      <div className="agenda-container" id="agenda" style={{ background: 'lightgray', height: 1000 }}>
-        this is Agenda.
+      <div className="agenda-container full-screen-container" id="agenda" style={{ background: 'lightgray', height: 1000 }}>
+        <Title title={this.constructor.name} />
       </div>
     );
   }
@@ -99,8 +100,8 @@ class Agenda extends Component {
 class Partners extends Component {
   render() {
     return (
-      <div className="partners-container" id="partners" style={{ background: 'lightgray', height: 1000 }}>
-        this is partners.
+      <div className="partners-container full-screen-container" id="partners" style={{ background: 'lightgray', height: 1000 }}>
+        <Title title={this.constructor.name} />
       </div>
     );
   }
@@ -114,8 +115,8 @@ class Venue extends Component {
 
   render() {
     return (
-      <div className="venue-container" id="venue" style={{ height: '100vh' }}>
-        <h2 style={{ textAlign: 'center' }}>Venue</h2>
+      <div className="venue-container full-screen-container" id="venue" style={{ height: '100vh' }}>
+        <Title title={this.constructor.name} />
         <div style={{ height: '50vh', margin: '100px 0' }}>
           <Map amapkey="788e08def03f95c670944fe2c78fa76f" plugins={['ToolBar']}>
             <Marker position={this.markerPosition} clickable />
@@ -135,8 +136,8 @@ class Venue extends Component {
 class ContactUs extends Component {
   render() {
     return (
-      <div className="contact-us-container" id="contactus" style={{ background: 'lightgray', height: 1000 }}>
-        this is ContactUs.
+      <div className="contact-us-container full-screen-container" id="contactus" style={{ background: 'lightgray', height: 1000 }}>
+        <Title title={this.constructor.name} />
       </div>
     );
   }
