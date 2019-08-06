@@ -43,7 +43,6 @@ const proxyServer = devMode === 'local' ? {} : proxy.map(v => {
     };
 });
 
-
 const devConfig = {
     mode: 'development',
     devtool: 'cheap-module-source-map',
@@ -61,10 +60,12 @@ const devConfig = {
         host: '0.0.0.0',
         port: 9527,
         compress: true,
-        hot: false,
-        inline: false,
+        hot: true,
+        inline: true,
         historyApiFallback: true,
         proxy: proxyServer,
+        open: true,
+        openPage: 'index.html',
         before(app) {
             app.all('*', (req, res, next) => {
                 let mockFile = mockMapper[req.path];
