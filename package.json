@@ -34,6 +34,7 @@
     "minireset.css": "^0.0.5",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-amap": "^1.2.8",
     "react-bootstrap": "^1.0.0-beta.10",
     "react-dom": "^16.8.6"
   },
@@ -91,7 +92,6 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
       "commit-msg": "node scripts/verify-commit-msg.js"
     }
   },

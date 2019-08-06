@@ -8,6 +8,7 @@ import 'minireset.css/minireset.min.css';
 import Nav from 'react-bootstrap/Nav';
 import NavBar from 'react-bootstrap/NavBar';
 // import { Nav, NavBar } from 'react-bootstrap'; // todo: this way didn't work
+import { Map, Marker, InfoWindow } from 'react-amap';
 
 import './index.less';
 import LOGO from '@img/logo.jpg';
@@ -35,7 +36,7 @@ const navs = [
   },
   {
     id: 6,
-    title: 'Info'
+    title: 'Venue'
   },
   {
     id: 7,
@@ -75,6 +76,34 @@ class Speakers extends Component {
 }
 
 
+class Venue extends Component {
+  constructor(props) {
+    super(props);
+    this.markerPosition = { longitude: 116.410027, latitude: 39.921232 };
+  }
+
+
+  render() {
+    return (
+      <div className="venue-container" id="venue" style={{ height: '100vh' }}>
+        <h2 style={{ textAlign: 'center' }}>Venue</h2>
+        <div style={{ height: '50vh', margin: '100px 0' }}>
+          <Map amapkey="788e08def03f95c670944fe2c78fa76f" plugins={['ToolBar']}>
+            <Marker position={this.markerPosition} clickable />
+            <InfoWindow
+              position={this.markerPosition}
+              visible
+            // isCustom={false}
+              content="北京市东城区王府井大街57号<br/>北京金茂万丽酒店  xx层xx厅"
+            />
+          </Map>
+        </div>
+      </div>
+    );
+  }
+}
+
+
 const app = () => (
   <div>
     <div className="index-container">
@@ -98,6 +127,7 @@ const app = () => (
       <Home />
       <About />
       <Speakers />
+      <Venue />
     </div>
   </div>
 );
