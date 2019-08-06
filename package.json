@@ -26,12 +26,15 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.5.5",
+    "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
     "lodash-decorators": "^6.0.1",
     "memoize-one": "^5.0.5",
+    "minireset.css": "^0.0.5",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.10",
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
@@ -51,6 +54,7 @@
     "cross-env": "^5.2.0",
     "css-loader": "^3.1.0",
     "cssnano": "^4.1.10",
+    "debug": "^4.1.1",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-loader": "^2.2.1",
