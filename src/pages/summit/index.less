@@ -1,12 +1,35 @@
-.navbar-nav {
-  margin: 0 auto;
+.navbar {
+  background: rgba(0, 0, 0, 0.25);
+  .navbar-nav {
+    margin: 0 auto;
+  }
 }
 .lang-btn {
   border-radius: 50%;
   background: lightgrey;
   border: none;
   margin-right: 5px;
-  &.selected{
+  &.selected {
     background: lightslategrey;
+  }
+}
+
+.home-container {
+  padding-top: 150px;
+  & > * {
+    text-align: center;
+  }
+  .summit-title{
+    font-size: 60px;
+  }
+  .summit-slogen{
+    margin-top: 200px;
+    font-size: 40px;
+  }
+  .summit-date-position{
+    margin-top: 40px;
+    .position-detail{
+      margin-top: 20px;
+    }
   }
 }

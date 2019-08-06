@@ -40,16 +40,27 @@ const navs = [
   },
   {
     id: 7,
-    title: 'Contact us'
+    title: 'ContactUs'
   }
 ];
-
 
 class Home extends Component {
   render() {
     return (
       <div className="home-container" id="home" style={{ background: 'lightgray', height: 1000 }}>
-        this is home.
+        <div className="logo-container">
+          <img src={LOGO} alt="" width="200" />
+        </div>
+        <h1 className="summit-title">
+          AElf生态基金启动大会
+        </h1>
+        <h2 className="summit-slogen">
+          slogen
+        </h2>
+        <div className="summit-date-position">
+          <h3 className="date-position-simple-info">2019 - 08 - 18  · 北京金茂万丽酒店</h3>
+          <p className="position-detail">（北京市东城区王府井大街57号 北京金茂万丽酒店 xx层xx厅）</p>
+        </div>
       </div>
     );
   }
@@ -75,13 +86,31 @@ class Speakers extends Component {
   }
 }
 
+class Agenda extends Component {
+  render() {
+    return (
+      <div className="agenda-container" id="agenda" style={{ background: 'lightgray', height: 1000 }}>
+        this is Agenda.
+      </div>
+    );
+  }
+}
+
+class Partners extends Component {
+  render() {
+    return (
+      <div className="partners-container" id="partners" style={{ background: 'lightgray', height: 1000 }}>
+        this is partners.
+      </div>
+    );
+  }
+}
 
 class Venue extends Component {
   constructor(props) {
     super(props);
     this.markerPosition = { longitude: 116.410027, latitude: 39.921232 };
   }
-
 
   render() {
     return (
@@ -103,11 +132,20 @@ class Venue extends Component {
   }
 }
 
+class ContactUs extends Component {
+  render() {
+    return (
+      <div className="contact-us-container" id="contactus" style={{ background: 'lightgray', height: 1000 }}>
+        this is ContactUs.
+      </div>
+    );
+  }
+}
 
 const app = () => (
   <div>
     <div className="index-container">
-      <NavBar sticky="top" variant="dark" bg="dark">
+      <NavBar fixed="top" variant="dark">
         <div className="img-container">
           <img src={LOGO} alt="" />
         </div>
@@ -127,7 +165,10 @@ const app = () => (
       <Home />
       <About />
       <Speakers />
+      <Agenda />
+      <Partners />
       <Venue />
+      <ContactUs />
     </div>
   </div>
 );
