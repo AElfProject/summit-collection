@@ -42,7 +42,8 @@ const baseConfig = {
       {
         test: /\.less$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          'style-loader', // for hot refresh style
+          // MiniCssExtractPlugin.loader, // todo: comment this to make style-loader work 
           'css-loader',
           'postcss-loader',
           {
