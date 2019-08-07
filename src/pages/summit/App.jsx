@@ -11,6 +11,7 @@ import NavBar from 'react-bootstrap/NavBar';
 import Table from 'react-bootstrap/Table';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
+import CardColumns from 'react-bootstrap/CardColumns';
 // import { Nav, NavBar } from 'react-bootstrap'; // todo: this way didn't work
 import { Map, Marker, InfoWindow } from 'react-amap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -65,6 +66,27 @@ const speakers = [
   {
     name: 'alex',
     speakTitle: 'some words'
+  }
+];
+
+const partners = [
+  {
+    type: 'Participants',
+    members: [
+      LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO
+    ]
+  },
+  {
+    type: 'Medias',
+    members: [
+      LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO
+    ]
+  },
+  {
+    type: 'Community Support',
+    members: [
+      LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO
+    ]
   }
 ];
 
@@ -146,7 +168,7 @@ class Speakers extends Component {
 class Agenda extends Component {
   render() {
     return (
-      <div className="agenda-container full-screen-container" id="agenda" style={{ background: 'rgb(13, 15, 30)', height: 1000 }}>
+      <div className="agenda-container full-screen-container" id="agenda" style={{ background: '#fff', height: 1000 }}>
         <Title title={this.constructor.name} />
         <Table responsive="lg" variant="dark" size="lg" style={{ width: '80%', margin: '50px auto 0' }}>
           <thead>
@@ -185,9 +207,22 @@ class Agenda extends Component {
 class Partners extends Component {
   render() {
     return (
-      <div className="partners-container full-screen-container bg-gray" id="partners" style={{ height: 1000 }}>
-        <Title title={this.constructor.name} />
-      </div>
+      <section className="partners-container full-screen-container bg-gray" id="partners" style={{ height: 1500 }}>
+        {
+          partners.map((groupOfOneType, indexA) => (
+            <section className="margin-top-md" key={indexA}>
+              <h1 className="text-center">{groupOfOneType.type}</h1>
+              <CardColumns className="partici-group block-center">
+                {groupOfOneType.members.map((item, indexB) => (
+                  <Card className="rounded-lg partner-card" key={indexB}>
+                    <Card.Img variant="top" src={item} style={{ background: 'gray' }} />
+                  </Card>
+                ))}
+              </CardColumns>
+            </section>
+          ))
+        }
+      </section>
     );
   }
 }
@@ -235,7 +270,7 @@ const app = () => (
         <div className="img-container">
           <img src={LOGO} alt="" />
         </div>
-        <Scrollspy className="nav block-center" items={['home', 'about', 'speakers', 'agenda', 'partners', 'venue', 'contact-us']} currentClassName="is-current">
+        <Scrollspy className="nav block-center" items={['home', 'about', 'speakers', 'agenda', 'partners', 'venue', 'contactus']} currentClassName="is-current">
           {navs.map(nav => (
             <Nav.Item as="li" key={nav.id}>
               <Nav.Link href={`#${nav.title.toLowerCase()}`}>{nav.title}</Nav.Link>
