@@ -15,6 +15,7 @@ import CardDeck from 'react-bootstrap/CardDeck';
 import { Map, Marker, InfoWindow } from 'react-amap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFire } from '@fortawesome/free-solid-svg-icons';
+import Scrollspy from 'react-scrollspy';
 
 import './index.less';
 import LOGO from '@img/logo.jpg';
@@ -234,13 +235,13 @@ const app = () => (
         <div className="img-container">
           <img src={LOGO} alt="" />
         </div>
-        <Nav defaultActiveKey="/home" as="ul">
+        <Scrollspy className="nav block-center" items={['home', 'about', 'speakers', 'agenda', 'partners', 'venue', 'contact-us']} currentClassName="is-current">
           {navs.map(nav => (
             <Nav.Item as="li" key={nav.id}>
               <Nav.Link href={`#${nav.title.toLowerCase()}`}>{nav.title}</Nav.Link>
             </Nav.Item>
           ))}
-        </Nav>
+        </Scrollspy>
         <div className="btn-group">
           <button type="button" className="lang-btn selected" disabled>中</button>
           <button type="button" className="lang-btn">En</button>
