@@ -26,6 +26,7 @@ const baseConfig = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       '@src': path.resolve(__dirname, '../src'),
+      '@public': path.resolve(__dirname, '../public'),
       '@img': path.resolve(__dirname, '../public', 'img'),
       '@components': path.resolve(__dirname, '../src', 'components'),
       '@pages': path.resolve(__dirname, '../src', 'pages'),
