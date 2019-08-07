@@ -10,6 +10,7 @@ import Nav from 'react-bootstrap/Nav';
 import NavBar from 'react-bootstrap/NavBar';
 import Table from 'react-bootstrap/Table';
 import Card from 'react-bootstrap/Card';
+import CardDeck from 'react-bootstrap/CardDeck';
 // import { Nav, NavBar } from 'react-bootstrap'; // todo: this way didn't work
 import { Map, Marker, InfoWindow } from 'react-amap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -51,6 +52,21 @@ const navs = [
   }
 ];
 
+const speakers = [
+  {
+    name: 'alex',
+    speakTitle: 'some words'
+  },
+  {
+    name: 'alex',
+    speakTitle: 'some words'
+  },
+  {
+    name: 'alex',
+    speakTitle: 'some words'
+  }
+];
+
 class Home extends Component {
   render() {
     return (
@@ -76,7 +92,7 @@ class Home extends Component {
 class About extends Component {
   render() {
     return (
-      <div className="about-container full-screen-container" id="about" style={{ background: 'lightblue', height: 1000 }}>
+      <div className="about-container full-screen-container" id="about" style={{ height: 1000 }}>
         <Title title={this.constructor.name} />
         <h2 className="text-center about-title">大会简介</h2>
         <Card className="bg-dark text-white summit-intro-card">
@@ -110,6 +126,17 @@ class Speakers extends Component {
     return (
       <div className="speakers-container full-screen-container" id="speakers" style={{ background: 'lightgray', height: 1000 }}>
         <Title title={this.constructor.name} />
+        <CardDeck className="speakers-cards block-center">
+          {speakers.map((speaker, index) => (
+            <Card key={index}>
+              <Card.Img className="summit-speaker-img" variant="top" src={LOGO} />
+              <Card.Body>
+                <Card.Title>{speaker.name}</Card.Title>
+                <Card.Text>{speaker.speakTitle}</Card.Text>
+              </Card.Body>
+            </Card>
+          ))}
+        </CardDeck>
       </div>
     );
   }
@@ -118,7 +145,7 @@ class Speakers extends Component {
 class Agenda extends Component {
   render() {
     return (
-      <div className="agenda-container full-screen-container" id="agenda" style={{ background: 'lightgray', height: 1000 }}>
+      <div className="agenda-container full-screen-container" id="agenda" style={{ background: 'rgb(13, 15, 30)', height: 1000 }}>
         <Title title={this.constructor.name} />
         <Table responsive="lg" variant="dark" size="lg" style={{ width: '80%', margin: '50px auto 0' }}>
           <thead>
@@ -157,7 +184,7 @@ class Agenda extends Component {
 class Partners extends Component {
   render() {
     return (
-      <div className="partners-container full-screen-container" id="partners" style={{ background: 'lightgray', height: 1000 }}>
+      <div className="partners-container full-screen-container bg-gray" id="partners" style={{ height: 1000 }}>
         <Title title={this.constructor.name} />
       </div>
     );
@@ -193,7 +220,7 @@ class Venue extends Component {
 class ContactUs extends Component {
   render() {
     return (
-      <div className="contact-us-container full-screen-container" id="contactus" style={{ background: 'lightgray', height: 1000 }}>
+      <div className="contact-us-container full-screen-container bg-gray" id="contactus" style={{ height: 1000 }}>
         <Title title={this.constructor.name} />
       </div>
     );
