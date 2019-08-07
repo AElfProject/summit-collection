@@ -3,10 +3,12 @@
  * @author atom-yang
  */
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import '@public/css/bootstrap.min.css';
 import 'minireset.css/minireset.min.css';
 import Nav from 'react-bootstrap/Nav';
 import NavBar from 'react-bootstrap/NavBar';
+import Table from 'react-bootstrap/Table';
 // import { Nav, NavBar } from 'react-bootstrap'; // todo: this way didn't work
 import { Map, Marker, InfoWindow } from 'react-amap';
 
@@ -92,6 +94,35 @@ class Agenda extends Component {
     return (
       <div className="agenda-container full-screen-container" id="agenda" style={{ background: 'lightgray', height: 1000 }}>
         <Title title={this.constructor.name} />
+        <Table responsive="lg" variant="dark" size="lg" style={{ width: '80%', margin: '50px auto 0' }}>
+          <thead>
+            <tr>
+              <th colSpan="3">
+                <h1 style={{ textAlign: 'center', width: '100%', display: 'block' }}>
+                  会议日程
+                </h1>
+                <p style={{ textAlign: 'center' }}>（2019 - 08 - 18     14:00 ~ 17:00）</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>00:00 - 00:00</td>
+              <td>开场致辞</td>
+              <td>马昊伯</td>
+            </tr>
+            <tr>
+              <td>00:00 - 00:00</td>
+              <td>开场致辞</td>
+              <td>马昊伯</td>
+            </tr>
+            <tr>
+              <td>00:00 - 00:00</td>
+              <td>开场致辞</td>
+              <td>马昊伯</td>
+            </tr>
+          </tbody>
+        </Table>
       </div>
     );
   }
@@ -118,7 +149,7 @@ class Venue extends Component {
       <div className="venue-container full-screen-container" id="venue" style={{ height: '100vh' }}>
         <Title title={this.constructor.name} />
         <div style={{ height: '50vh', margin: '100px 0' }}>
-          <Map amapkey="788e08def03f95c670944fe2c78fa76f" plugins={['ToolBar']}>
+          <Map amapkey="788e08def03f95c670944fe2c78fa76f" plugins={['ToolBar']} mapStyle="amap://styles/grey">
             <Marker position={this.markerPosition} clickable />
             <InfoWindow
               position={this.markerPosition}
