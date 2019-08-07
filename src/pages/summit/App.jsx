@@ -14,8 +14,8 @@ import CardDeck from 'react-bootstrap/CardDeck';
 import CardColumns from 'react-bootstrap/CardColumns';
 // import { Nav, NavBar } from 'react-bootstrap'; // todo: this way didn't work
 import { Map, Marker, InfoWindow } from 'react-amap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFire } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faFire, faWeixin, faQQ } from '@fortawesome/free-solid-svg-icons';
 import Scrollspy from 'react-scrollspy';
 
 import './index.less';
@@ -90,10 +90,37 @@ const partners = [
   }
 ];
 
+const contactMethods = [
+  {
+    icon: 'fab fa-weixin'
+  },
+  {
+    icon: 'fab fa-facebook'
+  },
+  {
+    icon: 'fab fa-reddit'
+  },
+  {
+    icon: 'fab fa-github'
+  },
+  {
+    icon: 'fab fa-youtube'
+  },
+  {
+    icon: 'fab fa-linkedin'
+  },
+  {
+    icon: 'fab fa-twitter'
+  },
+  {
+    icon: 'fab fa-telegram'
+  }
+];
+
 class Home extends Component {
   render() {
     return (
-      <div className="home-container" id="home" style={{ background: 'lightgray', height: 1000 }}>
+      <div className="home-container" id="home" style={{ background: 'lightgray', height: '100vh' }}>
         <div className="logo-container">
           <img src={LOGO} alt="" width="200" />
         </div>
@@ -115,7 +142,7 @@ class Home extends Component {
 class About extends Component {
   render() {
     return (
-      <div className="about-container full-screen-container" id="about" style={{ height: 1000 }}>
+      <div className="about-container full-screen-container" id="about" style={{ height: '100vh' }}>
         <Title title={this.constructor.name} />
         <h2 className="text-center about-title">大会简介</h2>
         <Card className="bg-dark text-white summit-intro-card">
@@ -133,7 +160,8 @@ class About extends Component {
           {
           ['特色1', '特色2', '特色3'].map((charact, index) => (
             <div className="charact-item-container text-center" key={index}>
-              <FontAwesomeIcon icon={faFire} />
+              {/* <FontAwesomeIcon icon={faFire} /> */}
+              <i className="fas fa-fire" />
               <span>{`  ${charact}`}</span>
             </div>
           ))
@@ -147,7 +175,7 @@ class About extends Component {
 class Speakers extends Component {
   render() {
     return (
-      <div className="speakers-container full-screen-container" id="speakers" style={{ background: 'lightgray', height: 1000 }}>
+      <div className="speakers-container full-screen-container" id="speakers" style={{ background: 'lightgray', height: '100vh' }}>
         <Title title={this.constructor.name} />
         <CardDeck className="speakers-cards block-center">
           {speakers.map((speaker, index) => (
@@ -168,7 +196,7 @@ class Speakers extends Component {
 class Agenda extends Component {
   render() {
     return (
-      <div className="agenda-container full-screen-container" id="agenda" style={{ background: '#fff', height: 1000 }}>
+      <div className="agenda-container full-screen-container" id="agenda" style={{ background: '#fff', height: '100vh' }}>
         <Title title={this.constructor.name} />
         <Table responsive="lg" variant="dark" size="lg" style={{ width: '80%', margin: '50px auto 0' }}>
           <thead>
@@ -256,8 +284,31 @@ class Venue extends Component {
 class ContactUs extends Component {
   render() {
     return (
-      <div className="contact-us-container full-screen-container bg-gray" id="contactus" style={{ height: 1000 }}>
+      <div className="contact-us-container full-screen-container bg-gray" id="contactus" style={{ height: '100vh' }}>
         <Title title={this.constructor.name} />
+        {/* TODO: make lis align center */}
+        <ul
+          className="block-center rounded-lg margin-top-md"
+          style={{
+            width: 300, height: 300, position: 'relative'
+          }}
+        >
+          {contactMethods.map((method, index) => {
+            const angle = 360 / contactMethods.length * index;
+            return (
+              <li key={index}>
+                <div style={{
+                  position: 'absolute', top: '50%', left: '50%', marginLeft: '-20px', marginTop: '-20px', transform: `rotate(${angle}deg) translate(100px) rotate(${-angle}deg)`
+                }}
+                >
+                  {/* <FontAwesomeIcon icon={method.icon} />  */}
+                  <i className={`${method.icon} social-network-icon`} style={{ fontSize: 50 }} />
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+        <p className="text-center margin-top-lg">Copyright © 2018 ælf</p>
       </div>
     );
   }
