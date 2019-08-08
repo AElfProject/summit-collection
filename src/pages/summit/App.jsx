@@ -438,7 +438,22 @@ class Venue extends Component {
 }
 
 class ContactUs extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeItem: null
+    };
+  }
+
+  handleMouseOver(activeItem) {
+    this.setState({
+      activeItem
+    });
+  }
+
   render() {
+    const { activeItem } = this.state;
+
     return (
       <div
         className="contact-us-container full-screen-container bg-gray"
@@ -447,19 +462,19 @@ class ContactUs extends Component {
       >
         <Title title={this.constructor.name} />
         {/* TODO: make lis align center */}
-        <ul
-          className="block-center rounded-lg margin-top-md"
-          style={{
-            width: 300,
-            height: 300,
-            position: 'relative'
-          }}
-        >
-          {contactMethods.map((method, index) => {
-            const angle = (360 / contactMethods.length) * index;
-            return (
-              <li key={index}>
-                <div
+        <section className="contact-methods  margin-top-md">
+          <ul
+            className="block-center rounded-lg"
+            style={{
+              width: 300,
+              height: 300,
+              position: 'relative'
+            }}
+          >
+            {contactMethods.map((method, index) => {
+              const angle = (360 / contactMethods.length) * index;
+              return (
+                <li
                   style={{
                     position: 'absolute',
                     top: '50%',
@@ -468,17 +483,24 @@ class ContactUs extends Component {
                     marginTop: '-20px',
                     transform: `rotate(${angle}deg) translate(100px) rotate(${-angle}deg)`
                   }}
+                  key={index}
+                  onMouseOver={this.handleMouseOver.bind(this, method.icon)}
                 >
                   {/* <FontAwesomeIcon icon={method.icon} />  */}
                   <i
                     className={`${method.icon} social-network-icon`}
                     style={{ fontSize: 50 }}
                   />
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+                </li>
+              );
+            })}
+          </ul>
+          {/* TODO: center the item below */}
+          <div className="center-item">
+            <i className={`${activeItem} center-item-icon`} />
+          </div>
+        </section>
+
         <p className="text-center margin-top-lg">Copyright © 2018 ælf</p>
       </div>
     );

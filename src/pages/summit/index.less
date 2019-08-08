@@ -105,14 +105,14 @@
   }
 }
 
-.venue-container{
-  .amap-container{
+.venue-container {
+  .amap-container {
     cursor: grab;
-    &:active{
+    &:active {
       cursor: grabbing;
     }
   }
-  .zoom-tip-mask{
+  .zoom-tip-mask {
     position: absolute;
     left: 0;
     right: 0;
@@ -127,17 +127,28 @@
     background: #000;
     color: #fff;
     font-size: 50px;
-    &:hover{
+    &:hover {
       opacity: 0.5;
       cursor: pointer;
     }
   }
 }
 
-.contact-us-container{
-  .social-network-icon:hover{
+.contact-us-container {
+  position: relative;
+  .social-network-icon:hover {
     color: lightseagreen;
     cursor: pointer;
+  }
+  .center-item {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    .center-item-icon {
+      font-size: 100px;
+      color: lightseagreen;
+    }
   }
 }
 
