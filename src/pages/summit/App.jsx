@@ -292,11 +292,16 @@ class Venue extends Component {
   constructor(props) {
     super(props);
     this.markerPosition = { longitude: 116.410027, latitude: 39.921232 };
+    this.state = {
+      isMaskShow: true
+    };
   }
+
+  handleClick() { this.setState({ isMaskShow: false }); }
 
   render() {
     const { currentNav } = this.props;
-    console.log('currentNav', currentNav);
+    const { isMaskShow } = this.state;
 
     return (
       <div className="venue-container full-screen-container" id="venue" style={{ height: '100vh' }}>
@@ -310,9 +315,9 @@ class Venue extends Component {
             // isCustom={false}
               content="北京市东城区王府井大街57号<br/>北京金茂万丽酒店  xx层xx厅"
             />
-            <div className="zoom-tip-layer">
-              lorem
-            </div>
+            {
+              isMaskShow ? <div className="zoom-tip-mask" role="presentation" onClick={this.handleClick.bind(this)} onKeyDown={this.handleClick.bind(this)}> 使用双指移动地图 </div> : null
+            }
           </Map>
         </div>
       </div>

@@ -105,6 +105,35 @@
   }
 }
 
+.venue-container{
+  .amap-container{
+    cursor: grab;
+    &:active{
+      cursor: grabbing;
+    }
+  }
+  .zoom-tip-mask{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    line-height: 50vh; // todo
+    text-align: center;
+    opacity: 0;
+    transition: opacity ease-in-out 0.8s;
+    background: #000;
+    color: #fff;
+    font-size: 50px;
+    &:hover{
+      opacity: 0.5;
+      cursor: pointer;
+    }
+  }
+}
+
 .contact-us-container{
   .social-network-icon:hover{
     color: lightseagreen;
