@@ -7,17 +7,19 @@ import React, { Component } from 'react';
 import 'minireset.css/minireset.min.css';
 import '@public/css/bootstrap.min.css';
 import Nav from 'react-bootstrap/Nav';
-import NavBar from 'react-bootstrap/NavBar';
+import NavBar from 'react-bootstrap/Navbar';
 import Table from 'react-bootstrap/Table';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
 import CardColumns from 'react-bootstrap/CardColumns';
-// import { Nav, NavBar } from 'react-bootstrap'; // todo: this way didn't work
+// import { Nav, NavBar } from 'react-bootstrap'; // todo: this way is less ideally
 import { Map, Marker, InfoWindow } from 'react-amap';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faFire, faWeixin, faQQ } from '@fortawesome/free-solid-svg-icons';
 import Scrollspy from 'react-scrollspy';
 import { Translation } from 'react-i18next';
+// import { debounce } from 'debounce';
+import { throttle } from 'throttle-debounce';
 
 import './index.less';
 import LOGO from '@img/logo.jpg';
@@ -55,6 +57,8 @@ const navs = [
     title: 'ContactUs'
   }
 ];
+
+const navTitleGroup = navs.map(item => item.title.toLocaleLowerCase());
 
 const speakers = [
   {
@@ -147,15 +151,7 @@ class SummitNav extends Component {
         </div>
         <Scrollspy
           className="nav block-center"
-          items={[
-            'home',
-            'about',
-            'speakers',
-            'agenda',
-            'partners',
-            'venue',
-            'contactus'
-          ]}
+          items={navTitleGroup}
           currentClassName="is-current"
           onUpdate={this.handleAnchorUpdate.bind(this)}
         >
@@ -458,13 +454,11 @@ class ContactUs extends Component {
       <div
         className="contact-us-container full-screen-container bg-gray"
         id="contactus"
-        style={{ height: '100vh' }}
       >
         <Title title={this.constructor.name} />
-        {/* TODO: make lis align center */}
         <section className="contact-methods  margin-top-md">
           <ul
-            className="block-center rounded-lg"
+            className="contact-group block-center rounded-lg"
             style={{
               width: 300,
               height: 300,
@@ -475,13 +469,11 @@ class ContactUs extends Component {
               const angle = (360 / contactMethods.length) * index;
               return (
                 <li
+                  className="contact-item"
                   style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    marginLeft: '-20px',
-                    marginTop: '-20px',
-                    transform: `rotate(${angle}deg) translate(100px) rotate(${-angle}deg)`
+                    // use transform to make it to be a circle
+                    // use translate(-50%, -50%) with left/top: 50% to center the items
+                    transform: `rotate(${angle}deg) translate(110px) rotate(${-angle}deg) translate(-50%, -50%)`
                   }}
                   key={index}
                   onMouseOver={this.handleMouseOver.bind(this, method.icon)}
@@ -495,7 +487,6 @@ class ContactUs extends Component {
               );
             })}
           </ul>
-          {/* TODO: center the item below */}
           <div className="center-item">
             <i className={`${activeItem} center-item-icon`} />
           </div>
@@ -515,10 +506,31 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    // window.addEventListener('scroll', this.handleScroll.bind(this));
+    window.addEventListener('wheel', throttle(1000, this.handleScroll.bind(this)), true);
+  }
+
   onAnchorUpdate(ele) {
     this.setState({
-      currentNav: ele.id
+      currentNav: ele.id,
     });
+  }
+
+  handleScroll(e) {
+    const { currentNav } = this.state;
+
+    if (e.deltaY > 20) {
+      // debugger;
+      const index = navTitleGroup.findIndex(item => item === currentNav);
+      let nextIndex = index + 1;
+      if (nextIndex >= navTitleGroup.length) nextIndex -= 1;
+      const nextNav = navTitleGroup[nextIndex];
+      window.location.hash = nextNav;
+      return true;
+    }
+    e.preventDefault();
+    return false;
   }
 
   render() {

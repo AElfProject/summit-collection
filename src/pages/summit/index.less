@@ -24,6 +24,10 @@
 }
 
 // special for the page
+.index-container{
+  overflow-y: scroll; // todo: must?
+}
+
 .navbar {
   background: rgba(0, 0, 0, 0.25);
   padding: 0 1rem;
@@ -120,7 +124,7 @@
     bottom: 0;
     width: 100%;
     height: 100%;
-    line-height: 50vh; // todo
+    line-height: 50vh; // todo: if the father element's height isn't fixed maybe we can only use flex?
     text-align: center;
     opacity: 0;
     transition: opacity ease-in-out 0.8s;
@@ -135,7 +139,15 @@
 }
 
 .contact-us-container {
-  position: relative;
+  height: 100vh;
+  .contact-methods{
+    position: relative;
+    .contact-item{
+      position: absolute; // require to make it arrange as a circle
+      top: 50%; // to make it align center
+      left: 50%;
+    }
+  }
   .social-network-icon:hover {
     color: lightseagreen;
     cursor: pointer;
