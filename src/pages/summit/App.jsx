@@ -117,6 +117,39 @@ const contactMethods = [
   }
 ];
 
+class SummitNav extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  handleAnchorUpdate(ele) {
+    const { onAnchorUpdate } = this.props;
+    typeof onAnchorUpdate === 'function' ? onAnchorUpdate(ele) : null;
+  }
+
+  render() {
+    return (
+      <NavBar fixed="top" variant="dark">
+        <div className="img-container">
+          <img src={LOGO} alt="" />
+        </div>
+        <Scrollspy className="nav block-center" items={['home', 'about', 'speakers', 'agenda', 'partners', 'venue', 'contactus']} currentClassName="is-current" onUpdate={this.handleAnchorUpdate.bind(this)}>
+          {navs.map(nav => (
+            <Nav.Item as="li" key={nav.id}>
+              <Nav.Link href={`#${nav.title.toLowerCase()}`}>{nav.title}</Nav.Link>
+            </Nav.Item>
+          ))}
+        </Scrollspy>
+        <div className="btn-group">
+          <button type="button" className="lang-btn selected" disabled>中</button>
+          <button type="button" className="lang-btn">En</button>
+        </div>
+      </NavBar>
+    );
+  }
+}
+
 class Home extends Component {
   render() {
     return (
@@ -262,18 +295,24 @@ class Venue extends Component {
   }
 
   render() {
+    const { currentNav } = this.props;
+    console.log('currentNav', currentNav);
+
     return (
       <div className="venue-container full-screen-container" id="venue" style={{ height: '100vh' }}>
         <Title title={this.constructor.name} />
         <div style={{ height: '50vh', margin: '100px 0' }}>
           <Map amapkey="788e08def03f95c670944fe2c78fa76f" plugins={['ToolBar']} mapStyle="amap://styles/grey">
-            <Marker position={this.markerPosition} clickable />
+            <Marker position={this.markerPosition} clickable animation={currentNav === 'venue' ? 'AMAP_ANIMATION_DROP' : 'AMAP_ANIMATION_NONE'} />
             <InfoWindow
               position={this.markerPosition}
-              visible
+              // visible
             // isCustom={false}
               content="北京市东城区王府井大街57号<br/>北京金茂万丽酒店  xx层xx厅"
             />
+            <div className="zoom-tip-layer">
+              lorem
+            </div>
           </Map>
         </div>
       </div>
@@ -314,34 +353,38 @@ class ContactUs extends Component {
   }
 }
 
-const app = () => (
-  <div>
-    <div className="index-container">
-      <NavBar fixed="top" variant="dark">
-        <div className="img-container">
-          <img src={LOGO} alt="" />
-        </div>
-        <Scrollspy className="nav block-center" items={['home', 'about', 'speakers', 'agenda', 'partners', 'venue', 'contactus']} currentClassName="is-current">
-          {navs.map(nav => (
-            <Nav.Item as="li" key={nav.id}>
-              <Nav.Link href={`#${nav.title.toLowerCase()}`}>{nav.title}</Nav.Link>
-            </Nav.Item>
-          ))}
-        </Scrollspy>
-        <div className="btn-group">
-          <button type="button" className="lang-btn selected" disabled>中</button>
-          <button type="button" className="lang-btn">En</button>
-        </div>
-      </NavBar>
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentNav: null
+    };
+  }
 
-      <Home />
-      <About />
-      <Speakers />
-      <Agenda />
-      <Partners />
-      <Venue />
-      <ContactUs />
-    </div>
-  </div>
-);
-export default React.memo(app);
+  onAnchorUpdate(ele) {
+    this.setState({
+      currentNav: ele.id
+    });
+  }
+
+  render() {
+    const { currentNav } = this.state;
+
+    return (
+      <div>
+        <div className="index-container">
+          <SummitNav onAnchorUpdate={this.onAnchorUpdate.bind(this)} />
+          <Home />
+          <About />
+          <Speakers />
+          <Agenda />
+          <Partners />
+          <Venue currentNav={currentNav} />
+          <ContactUs />
+        </div>
+      </div>
+    );
+  }
+}
+
+export default React.memo(App);
