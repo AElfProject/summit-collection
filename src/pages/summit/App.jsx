@@ -14,8 +14,10 @@ import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
 import CardColumns from 'react-bootstrap/CardColumns';
 import { Map, Marker, InfoWindow } from 'react-amap';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faFire, faWeixin, faQQ } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faFire } from '@fortawesome/free-solid-svg-icons';
 import Scrollspy from 'react-scrollspy';
 import { Translation } from 'react-i18next';
 // import { debounce } from 'debounce';
@@ -28,6 +30,8 @@ import Title from '@components/Title/';
 import i18n from './i18n';
 // const ReactAmap = r => require.ensure([], () => r(require('react-amap')));
 // const { Map, Marker, InfoWindow } = ReactAmap;
+
+library.add(fab, faFire);
 
 const navs = [
   {
@@ -94,28 +98,28 @@ const partners = [
 
 const contactMethods = [
   {
-    icon: 'fab fa-weixin'
+    icon: ['fab', 'weixin']
   },
   {
-    icon: 'fab fa-facebook'
+    icon: ['fab', 'facebook']
   },
   {
-    icon: 'fab fa-reddit'
+    icon: ['fab', 'reddit']
   },
   {
-    icon: 'fab fa-github'
+    icon: ['fab', 'github']
   },
   {
-    icon: 'fab fa-youtube'
+    icon: ['fab', 'youtube']
   },
   {
-    icon: 'fab fa-linkedin'
+    icon: ['fab', 'linkedin']
   },
   {
-    icon: 'fab fa-twitter'
+    icon: ['fab', 'twitter']
   },
   {
-    icon: 'fab fa-telegram'
+    icon: ['fab', 'telegram']
   }
 ];
 
@@ -260,8 +264,8 @@ class About extends Component {
         <section className="charact-group-container">
           {['特色1', '特色2', '特色3'].map((charact, index) => (
             <div className="charact-item-container text-center" key={index}>
-              {/* <FontAwesomeIcon icon={faFire} /> */}
-              <i className="fas fa-fire" />
+              <FontAwesomeIcon icon={['fas', 'fire']} />
+              {/* <i className="fas fa-fire" /> */}
               <span>{`  ${charact}`}</span>
             </div>
           ))}
@@ -496,20 +500,29 @@ class ContactUs extends Component {
                   key={index}
                   onMouseOver={this.handleMouseOver.bind(this, method.icon)}
                 >
-                  {/* <FontAwesomeIcon icon={method.icon} />  */}
-                  <i
+                  <FontAwesomeIcon
+                    icon={method.icon}
+                    size="3x"
+                    className="social-network-icon"
+                  />
+                  {/* <i
                     className={`${method.icon} social-network-icon`}
                     style={{ fontSize: 50 }}
-                  />
+                  /> */}
                 </li>
               );
             })}
           </ul>
           <div className="center-item">
-            <i className={`${activeItem} center-item-icon`} />
+            {/* <i className={`${activeItem} center-item-icon`} /> */}
+            <FontAwesomeIcon
+              icon={activeItem}
+              size="5x"
+              color="lightseagreen"
+              spin
+            />
           </div>
         </section>
-
         <p className="text-center margin-top-lg">Copyright © 2018 ælf</p>
       </div>
     );
@@ -569,7 +582,7 @@ class App extends Component {
           ) !== -1 ? (
             <Venue currentNav={currentNav} />
             ) : (
-              <div id="venue" style={{ height: '100vh' }} />
+            <div id="venue" style={{ height: '100vh' }} />
             )}
           <ContactUs />
         </div>
