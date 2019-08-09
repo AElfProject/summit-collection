@@ -99,7 +99,12 @@ const baseConfig = {
         filename,
         chunks,
         name,
-        title: config.title
+        title: config.title,
+        minify: { //压缩HTML文件
+          removeComments: true, //移除HTML中的注释
+          collapseWhitespace: false //删除空白符与换行符
+        },
+        favicon: './public/img/favicon.ico'
       });
     }),
     new webpack.ProvidePlugin({
