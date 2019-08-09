@@ -24,7 +24,7 @@
 }
 
 // special for the page
-.index-container{
+.index-container {
   overflow-y: scroll; // todo: must?
 }
 
@@ -36,13 +36,16 @@
       color: white;
     }
   }
-  .lang-btn {
-    border-radius: 50%;
-    background: lightgrey;
-    border: none;
-    margin-right: 5px;
-    &.selected {
-      background: lightslategrey;
+  .btn-group {
+    float: right;
+    .lang-btn {
+      border-radius: 50%;
+      background: lightgrey;
+      border: none;
+      margin-right: 5px;
+      &.selected {
+        background: lightslategrey;
+      }
     }
   }
 }
@@ -53,14 +56,17 @@
     text-align: center;
   }
   .summit-title {
-    font-size: 60px;
+    // font-size: 60px;
   }
   .summit-slogen {
-    margin-top: 200px;
-    font-size: 40px;
+    margin-top: 8rem;
+    // font-size: 40px;
   }
   .summit-date-position {
     margin-top: 40px;
+    .date-position-simple-info {
+      font-size: 1rem;
+    }
     .position-detail {
       margin-top: 20px;
     }
@@ -140,9 +146,9 @@
 
 .contact-us-container {
   height: 100vh;
-  .contact-methods{
+  .contact-methods {
     position: relative;
-    .contact-item{
+    .contact-item {
       position: absolute; // require to make it arrange as a circle
       top: 50%; // to make it align center
       left: 50%;
@@ -167,5 +173,11 @@
 @media (min-width: 576px) {
   .card-columns {
     column-count: 5;
+  }
+}
+
+@media (max-width: 576px) {
+  .full-screen-container {
+    padding: 30px 0;
   }
 }

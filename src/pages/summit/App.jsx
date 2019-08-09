@@ -7,12 +7,12 @@ import React, { Component } from 'react';
 import 'minireset.css/minireset.min.css';
 import '@public/css/bootstrap.min.css';
 import Nav from 'react-bootstrap/Nav';
-import NavBar from 'react-bootstrap/Navbar';
+import Navbar from 'react-bootstrap/Navbar';
+// import { Nav, NavBar } from 'react-bootstrap'; // todo: this way is less ideally
 import Table from 'react-bootstrap/Table';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
 import CardColumns from 'react-bootstrap/CardColumns';
-// import { Nav, NavBar } from 'react-bootstrap'; // todo: this way is less ideally
 import { Map, Marker, InfoWindow } from 'react-amap';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faFire, faWeixin, faQQ } from '@fortawesome/free-solid-svg-icons';
@@ -26,6 +26,8 @@ import LOGO from '@img/logo.jpg';
 import LOGO_LG from '@img/logo-lg.png';
 import Title from '@components/Title/';
 import i18n from './i18n';
+// const ReactAmap = r => require.ensure([], () => r(require('react-amap')));
+// const { Map, Marker, InfoWindow } = ReactAmap;
 
 const navs = [
   {
@@ -132,7 +134,8 @@ class SummitNav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentLang: 'zh-CN'
+      currentLang: 'zh-CN',
+      isCollapsed: false
     };
   }
 
@@ -141,52 +144,67 @@ class SummitNav extends Component {
     typeof onAnchorUpdate === 'function' ? onAnchorUpdate(ele) : null;
   }
 
+  handleCollapse() {
+    const { isCollapsed } = this.state;
+    this.setState({ isCollapsed: !isCollapsed });
+  }
+
   render() {
-    const { currentLang } = this.state;
+    const { currentLang, isCollapsed } = this.state;
 
     return (
-      <NavBar fixed="top" variant="dark">
+      <Navbar fixed="top" variant="dark" expand="lg">
         <div className="img-container">
           <img src={LOGO} alt="" />
         </div>
-        <Scrollspy
-          className="nav block-center"
-          items={navTitleGroup}
-          currentClassName="is-current"
-          onUpdate={this.handleAnchorUpdate.bind(this)}
-        >
-          {navs.map(nav => (
-            <Nav.Item as="li" key={nav.id}>
-              <Translation>
-                {t => (
-                  <Nav.Link href={`#${nav.title.toLowerCase()}`}>
-                    {t(nav.title)}
-                  </Nav.Link>
-                )}
-              </Translation>
-            </Nav.Item>
-          ))}
-        </Scrollspy>
-        <div className="btn-group">
-          {langs.map((lang, index) => {
-            const isActive = currentLang === lang.type;
-            return (
-              <button
-                type="button"
-                key={index}
-                className={`lang-btn ${isActive ? 'selected' : ''}`}
-                disabled={!!isActive}
-                onClick={() => {
-                  i18n.changeLanguage(lang.type);
-                  this.setState({ currentLang: lang.type });
-                }}
-              >
-                {lang.displayName}
-              </button>
-            );
-          })}
-        </div>
-      </NavBar>
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+          data-toggle="collapse"
+          onClick={this.handleCollapse.bind(this)}
+        />
+        <Navbar.Collapse id="basic-navbar-nav" in={isCollapsed}>
+          <Scrollspy
+            className="nav block-center mr-auto"
+            items={navTitleGroup}
+            currentClassName="is-current"
+            onUpdate={this.handleAnchorUpdate.bind(this)}
+          >
+            {navs.map(nav => (
+              <Nav.Item as="li" key={nav.id}>
+                <Translation>
+                  {t => (
+                    <Nav.Link
+                      href={`#${nav.title.toLowerCase()}`}
+                      onClick={this.handleCollapse.bind(this)}
+                    >
+                      {t(nav.title)}
+                    </Nav.Link>
+                  )}
+                </Translation>
+              </Nav.Item>
+            ))}
+          </Scrollspy>
+          <div className="btn-group">
+            {langs.map((lang, index) => {
+              const isActive = currentLang === lang.type;
+              return (
+                <button
+                  type="button"
+                  key={index}
+                  className={`lang-btn ${isActive ? 'selected' : ''}`}
+                  disabled={!!isActive}
+                  onClick={() => {
+                    i18n.changeLanguage(lang.type);
+                    this.setState({ currentLang: lang.type });
+                  }}
+                >
+                  {lang.displayName}
+                </button>
+              );
+            })}
+          </div>
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }
@@ -259,7 +277,7 @@ class Speakers extends Component {
       <div
         className="speakers-container full-screen-container"
         id="speakers"
-        style={{ background: 'lightgray', height: '100vh' }}
+        style={{ background: 'lightgray', minHeight: '100vh' }}
       >
         <Title title={this.constructor.name} />
         <CardDeck className="speakers-cards block-center">
@@ -288,7 +306,7 @@ class Agenda extends Component {
       <div
         className="agenda-container full-screen-container"
         id="agenda"
-        style={{ background: '#fff', height: '100vh' }}
+        style={{ background: '#fff', minHeight: '100vh' }}
       >
         <Title title={this.constructor.name} />
         <Table
@@ -344,7 +362,7 @@ class Partners extends Component {
       <section
         className="partners-container full-screen-container bg-gray"
         id="partners"
-        style={{ height: 1500 }}
+        style={{ minHeight: '100vh' }}
       >
         {partners.map((groupOfOneType, indexA) => (
           <section className="margin-top-md" key={indexA}>
@@ -513,7 +531,7 @@ class App extends Component {
 
   onAnchorUpdate(ele) {
     this.setState({
-      currentNav: ele.id,
+      currentNav: ele.id
     });
   }
 
@@ -545,7 +563,14 @@ class App extends Component {
           <Speakers />
           <Agenda />
           <Partners />
-          <Venue currentNav={currentNav} />
+          {/* TODO: 延迟加载组件的更好方法？ */}
+          {['partners', 'venue', 'contactus'].findIndex(
+            item => item === currentNav
+          ) !== -1 ? (
+            <Venue currentNav={currentNav} />
+            ) : (
+              <div id="venue" style={{ height: '100vh' }} />
+            )}
           <ContactUs />
         </div>
       </div>
