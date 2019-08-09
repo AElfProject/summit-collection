@@ -19,7 +19,7 @@ import { Map, Marker, InfoWindow } from 'react-amap';
 import Scrollspy from 'react-scrollspy';
 import { Translation } from 'react-i18next';
 // import { debounce } from 'debounce';
-import { throttle } from 'throttle-debounce';
+// import { throttle } from 'throttle-debounce';
 
 import './index.less';
 import LOGO from '@img/logo.jpg';
@@ -508,7 +508,7 @@ class App extends Component {
 
   componentDidMount() {
     // window.addEventListener('scroll', this.handleScroll.bind(this));
-    window.addEventListener('wheel', throttle(1000, this.handleScroll.bind(this)), true);
+    // window.addEventListener('wheel', throttle(1000, this.handleScroll.bind(this)), true);
   }
 
   onAnchorUpdate(ele) {
