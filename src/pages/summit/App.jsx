@@ -254,7 +254,7 @@ class About extends Component {
         id="about"
         style={{ height: '100vh' }}
       >
-        <Title title={this.constructor.name} />
+        <Title title="About" />
         <h2 className="text-center about-title">大会简介</h2>
         <Card className="bg-dark text-white summit-intro-card">
           <Card.Img className="bg-img" src={LOGO_LG} alt="Card image" />
@@ -290,7 +290,7 @@ class Speakers extends Component {
         id="speakers"
         style={{ background: 'lightgray', minHeight: '100vh' }}
       >
-        <Title title={this.constructor.name} />
+        <Title title="Speakers" />
         <CardDeck className="speakers-cards block-center">
           {speakers.map((speaker, index) => (
             <Card key={index}>
@@ -319,7 +319,7 @@ class Agenda extends Component {
         id="agenda"
         style={{ background: '#fff', minHeight: '100vh' }}
       >
-        <Title title={this.constructor.name} />
+        <Title title="Agenda" />
         <Table
           responsive="lg"
           variant="dark"
@@ -418,9 +418,7 @@ class Venue extends Component {
         id="venue"
         style={{ minHeight: '100vh' }}
       >
-        <Translation>
-          {t => <Title title={t(this.constructor.name)} />}
-        </Translation>
+        <Title title="Venue" />
         <div style={{ height: '50vh', margin: '100px 0' }}>
           <Map
             amapkey="788e08def03f95c670944fe2c78fa76f"
@@ -483,7 +481,7 @@ class ContactUs extends Component {
         className="contact-us-container full-screen-container bg-gray"
         id="contactus"
       >
-        <Title title={this.constructor.name} />
+        <Title title="Contact Us" />
         <section className="contact-methods  margin-top-md">
           <ul
             className="contact-group block-center rounded-lg"
