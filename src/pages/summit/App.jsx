@@ -181,7 +181,12 @@ class SummitNav extends Component {
                   {t => (
                     <Nav.Link
                       href={`#${nav.title.toLowerCase()}`}
-                      onClick={this.handleCollapse.bind(this)}
+                      // do the judge to avoid nav flash in PC
+                      onClick={
+                        window.clientWidth < 992
+                          ? this.handleCollapse.bind(this)
+                          : null
+                      }
                     >
                       {t(nav.title)}
                     </Nav.Link>
@@ -587,7 +592,7 @@ class App extends Component {
           ) !== -1 ? (
             <Venue currentNav={currentNav} />
             ) : (
-              <div id="venue" style={{ height: '100vh' }} />
+            <div id="venue" style={{ height: '100vh' }} />
             )}
           <ContactUs />
         </div>
