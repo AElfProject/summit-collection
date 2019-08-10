@@ -27,6 +27,7 @@ import './index.less';
 import LOGO from '@img/logo.jpg';
 import LOGO_LG from '@img/logo-lg.png';
 import Title from '@components/Title/';
+import { isMac } from '@utils/tools';
 import i18n from './i18n';
 // const ReactAmap = r => require.ensure([], () => r(require('react-amap')));
 // const { Map, Marker, InfoWindow } = ReactAmap;
@@ -172,6 +173,7 @@ class SummitNav extends Component {
             items={navTitleGroup}
             currentClassName="is-current"
             onUpdate={this.handleAnchorUpdate.bind(this)}
+            offset={-1} // use the offset to fix a bug of ScrollSpy
           >
             {navs.map(nav => (
               <Nav.Item as="li" key={nav.id}>
@@ -217,7 +219,7 @@ class Home extends Component {
   render() {
     return (
       <div
-        className="home-container"
+        className="home-container full-screen-container"
         id="home"
         style={{ background: 'lightgray', height: '100vh' }}
       >
@@ -403,16 +405,13 @@ class Venue extends Component {
   }
 
   render() {
-    // const { t } = useTranslation();
     const { currentNav } = this.props;
     const { isMaskShow } = this.state;
-    // console.log('t', t(this.constructor.name));
-
     return (
       <div
         className="venue-container full-screen-container"
         id="venue"
-        style={{ height: '100vh' }}
+        style={{ minHeight: '100vh' }}
       >
         <Translation>
           {t => <Title title={t(this.constructor.name)} />}
@@ -445,7 +444,9 @@ class Venue extends Component {
                 onClick={this.handleClick.bind(this)}
                 onKeyDown={this.handleClick.bind(this)}
               >
-                使用双指移动地图
+                {isMac()
+                  ? '使用双指移动地图'
+                  : '按住 Ctrl 并滚动鼠标滚轮才可缩放地图'}
               </div>
             ) : null}
           </Map>
@@ -513,17 +514,19 @@ class ContactUs extends Component {
               );
             })}
           </ul>
-          <div className="center-item">
-            {/* <i className={`${activeItem} center-item-icon`} /> */}
-            <FontAwesomeIcon
-              icon={activeItem}
-              size="5x"
-              color="lightseagreen"
-              spin
-            />
-          </div>
+          {activeItem ? (
+            <div className="center-item">
+              {/* <i className={`${activeItem} center-item-icon`} /> */}
+              <FontAwesomeIcon
+                icon={activeItem}
+                size="5x"
+                color="lightseagreen"
+                spin
+              />
+            </div>
+          ) : null}
         </section>
-        <p className="text-center margin-top-lg">Copyright © 2018 ælf</p>
+        <p className="text-center copyright-container">Copyright © 2018 ælf</p>
       </div>
     );
   }
@@ -543,9 +546,11 @@ class App extends Component {
   }
 
   onAnchorUpdate(ele) {
-    this.setState({
-      currentNav: ele.id
-    });
+    if (ele) {
+      this.setState({
+        currentNav: ele.id
+      });
+    }
   }
 
   handleScroll(e) {
@@ -577,12 +582,12 @@ class App extends Component {
           <Agenda />
           <Partners />
           {/* TODO: 延迟加载组件的更好方法？ */}
-          {['partners', 'venue', 'contactus'].findIndex(
+          {['agenda', 'partners', 'venue', 'contactus'].findIndex(
             item => item === currentNav
           ) !== -1 ? (
             <Venue currentNav={currentNav} />
             ) : (
-            <div id="venue" style={{ height: '100vh' }} />
+              <div id="venue" style={{ height: '100vh' }} />
             )}
           <ContactUs />
         </div>
