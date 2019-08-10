@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <title><%= htmlWebpackPlugin.options.title %></title>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-  <!-- <link rel="shortcut icon" href=<%= htmlWebpackPlugin.options.faviconUrl %> type="image/x-icon"> -->
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"
+    />
+    <link
+      rel="shortcut icon"
+      href="${require('./public/img/favicon.ico')}"
+      type="image/x-icon"
+    />
+  </head>
 
-<body>
+  <body>
     <div id="app"></div>
-</body>
+  </body>
 </html>
 <!-- <script src="https://kit.fontawesome.com/b383e6ddbc.js"></script> -->
 <!-- todo: choice a way to use fontawesome, use script label or npm package-->

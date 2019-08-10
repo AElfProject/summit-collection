@@ -84,6 +84,14 @@ const baseConfig = {
             }
           }
         ]
+      },
+      {
+        test: /\.ico$/,
+        loader: 'url-loader',
+        options: {
+          limit: 1,
+          name: 'img/[name].[ext]'
+        }
       }
     ]
   },
