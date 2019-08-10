@@ -30,7 +30,8 @@ const baseConfig = {
       '@img': path.resolve(__dirname, '../public', 'img'),
       '@components': path.resolve(__dirname, '../src', 'components'),
       '@pages': path.resolve(__dirname, '../src', 'pages'),
-      '@routes': path.resolve(__dirname, '../src', 'routes')
+      '@routes': path.resolve(__dirname, '../src', 'routes'),
+      '@utils': path.resolve(__dirname, '../src', 'utils')
     }
   },
   module: {
