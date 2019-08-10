@@ -51,7 +51,6 @@
 }
 
 .home-container {
-  padding-top: 150px;
   & > * {
     text-align: center;
   }
@@ -68,7 +67,7 @@
       font-size: 1rem;
     }
     .position-detail {
-      margin-top: 20px;
+      margin-top: 1vh;
     }
   }
 }
@@ -145,6 +144,7 @@
 }
 
 .contact-us-container {
+  position: relative;
   height: 100vh;
   .contact-methods {
     position: relative;
@@ -168,6 +168,12 @@
       color: lightseagreen;
     }
   }
+  .copyright-container {
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 @media (min-width: 576px) {
@@ -179,5 +185,17 @@
 @media (max-width: 576px) {
   .full-screen-container {
     padding: 30px 0;
+  }
+  .home-container {
+    padding-top: 20vh;
+    .summit-title {
+      margin-top: 8vh;
+    }
+    .summit-slogen {
+      margin-top: 8vh;
+    }
+    .summit-date-position {
+      margin-top: 7vh;
+    }
   }
 }
