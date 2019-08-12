@@ -27,6 +27,7 @@ import './index.less';
 import LOGO from '@img/logo.jpg';
 import LOGO_LG from '@img/logo-lg.png';
 import Title from '@components/Title/';
+import CopyRight from '@components/CopyRight/';
 import { isMac } from '@utils/tools';
 import i18n from './i18n';
 // const ReactAmap = r => require.ensure([], () => r(require('react-amap')));
@@ -529,7 +530,7 @@ class ContactUs extends Component {
             </div>
           ) : null}
         </section>
-        <p className="text-center copyright-container">Copyright © 2018 ælf</p>
+        <CopyRight></CopyRight>
       </div>
     );
   }
