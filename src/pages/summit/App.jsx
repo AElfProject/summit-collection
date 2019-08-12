@@ -590,7 +590,7 @@ class App extends Component {
           ) !== -1 ? (
             <Venue currentNav={currentNav} />
             ) : (
-            <div id="venue" style={{ height: '100vh' }} />
+              <div id="venue" style={{ height: '100vh' }} />
             )}
           <ContactUs />
         </div>
