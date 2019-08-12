@@ -4,10 +4,9 @@
  */
 import React from 'react';
 import { render } from 'react-dom';
-// import { BrowserRouter } from 'react-router-dom';
-import Repairing from "../Repairing";
+import App from './App';
+import Repairing from './Repairing';
+const isProdMode = process.env.NODE_ENV === 'production';
+const Element = isProdMode ? Repairing : App;
 
-render(
-  <Repairing />,
-  document.getElementById('app')
-);
+render(<Element />, document.getElementById('app'));
