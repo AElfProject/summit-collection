@@ -2,15 +2,14 @@ import React from 'react';
 import './index.less';
 
 export default function Title(props) {
-  const { title } = props;
+  const { title, subTitleColor } = props;
 
   return (
-    <div className="title">
-      ————————
-      &nbsp;
-      {title}
-      &nbsp;
-      ————————
-    </div>
+    <section className="page-title-container">
+      <p className="page-subtitle" style={{ color: subTitleColor }}>
+        AELF SUMMIT 2019
+      </p>
+      <h1 className="page-title">{title}</h1>
+    </section>
   );
 }

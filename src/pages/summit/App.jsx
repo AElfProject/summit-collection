@@ -24,8 +24,10 @@ import { Translation } from 'react-i18next';
 // import { throttle } from 'throttle-debounce';
 
 import './index.less';
-import LOGO from '@img/logo.jpg';
-import LOGO_LG from '@img/logo-lg.png';
+import LOGO from '@img/logo.png';
+import SPEAKER from '@img/speaker.png';
+import PARTNER_LOGO from '@img/partner-logo.png';
+// import LOGO_LG from '@img/logo-lg.png';
 import Title from '@components/Title/';
 import CopyRight from '@components/CopyRight/';
 import { isMac } from '@utils/tools';
@@ -71,30 +73,111 @@ const navTitleGroup = navs.map(item => item.title.toLocaleLowerCase());
 const speakers = [
   {
     name: 'alex',
-    speakTitle: 'some words'
+    speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
+    contactMethod: ['fab', 'facebook']
   },
   {
     name: 'alex',
-    speakTitle: 'some words'
+    speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
+    contactMethod: ['fab', 'facebook']
   },
   {
     name: 'alex',
-    speakTitle: 'some words'
+    speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
+    contactMethod: ['fab', 'facebook']
+  },
+  {
+    name: 'alex',
+    speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
+    contactMethod: ['fab', 'facebook']
+  },
+  {
+    name: 'alex',
+    speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
+    contactMethod: ['fab', 'facebook']
+  },
+  {
+    name: 'alex',
+    speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
+    contactMethod: ['fab', 'facebook']
+  }
+];
+
+const agendaList = [
+  {
+    time: '14:00-17:00',
+    speakTitle: 'AElf是如何实现高Tps的',
+    speaker: '马昊博（XXXXX）'
+  },
+  {
+    time: '14:00-17:00',
+    speakTitle: 'AElf是如何实现高Tps的',
+    speaker: '马昊博（XXXXX）'
+  },
+  {
+    time: '14:00-17:00',
+    speakTitle: 'AElf是如何实现高Tps的',
+    speaker: '马昊博（XXXXX）'
+  },
+  {
+    time: '14:00-17:00',
+    speakTitle: 'AElf是如何实现高Tps的',
+    speaker: '马昊博（XXXXX）'
+  },
+  {
+    time: '14:00-17:00',
+    speakTitle: 'AElf是如何实现高Tps的',
+    speaker: '马昊博（XXXXX）'
+  },
+  {
+    time: '14:00-17:00',
+    speakTitle: 'AElf是如何实现高Tps的',
+    speaker: '马昊博（XXXXX）'
   }
 ];
 
 const partners = [
   {
-    type: 'Participants',
-    members: [LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO]
+    type: null,
+    members: [
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO
+    ]
   },
   {
-    type: 'Medias',
-    members: [LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO]
+    type: '媒体',
+    members: [
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO
+    ]
   },
   {
-    type: 'Community Support',
-    members: [LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO]
+    type: '社区支持',
+    members: [
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO,
+      PARTNER_LOGO
+    ]
   }
 ];
 
@@ -127,12 +210,12 @@ const contactMethods = [
 
 const langs = [
   {
-    type: 'en',
-    displayName: 'En'
-  },
-  {
     type: 'zh-CN',
     displayName: '中'
+  },
+  {
+    type: 'en',
+    displayName: 'EN'
   }
 ];
 
@@ -160,8 +243,13 @@ class SummitNav extends Component {
 
     return (
       <Navbar fixed="top" variant="dark" expand="lg">
-        <div className="img-container">
-          <img src={LOGO} alt="" />
+        <div className="logo-container">
+          <div className="img-container">
+            <img src={LOGO} alt="" width="200" />
+          </div>
+          {/* <p className="prod-intro">
+            Cloud-Powered Public BlockChain for Business
+          </p> */}
         </div>
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
@@ -184,7 +272,7 @@ class SummitNav extends Component {
                       href={`#${nav.title.toLowerCase()}`}
                       // do the judge to avoid nav flash in PC
                       onClick={
-                        window.clientWidth < 992
+                        document.body.clientWidth < 992
                           ? this.handleCollapse.bind(this)
                           : null
                       }
@@ -200,18 +288,20 @@ class SummitNav extends Component {
             {langs.map((lang, index) => {
               const isActive = currentLang === lang.type;
               return (
-                <button
-                  type="button"
-                  key={index}
-                  className={`lang-btn ${isActive ? 'selected' : ''}`}
-                  disabled={!!isActive}
-                  onClick={() => {
-                    i18n.changeLanguage(lang.type);
-                    this.setState({ currentLang: lang.type });
-                  }}
-                >
-                  {lang.displayName}
-                </button>
+                <span className="btn-container" key={index}>
+                  {index !== 0 ? <span className="slash">/</span> : null}
+                  <button
+                    type="button"
+                    className={`lang-btn ${isActive ? 'selected' : ''}`}
+                    disabled={!!isActive}
+                    onClick={() => {
+                      i18n.changeLanguage(lang.type);
+                      this.setState({ currentLang: lang.type });
+                    }}
+                  >
+                    {lang.displayName}
+                  </button>
+                </span>
               );
             })}
           </div>
@@ -221,180 +311,161 @@ class SummitNav extends Component {
   }
 }
 
-class Home extends Component {
-  render() {
-    return (
-      <div
-        className="home-container full-screen-container"
-        id="home"
-        style={{ background: 'lightgray', height: '100vh' }}
-      >
-        <div className="logo-container">
+function Home(props) {
+  return (
+    <div
+      className="home-container block-center-both-flex full-screen-height"
+      id="home"
+    >
+      {/* <div className="logo-container">
           <img src={LOGO} alt="" width="200" />
-        </div>
-        <h1 className="summit-title">AElf生态基金启动大会</h1>
-        <h2 className="summit-slogen">slogen</h2>
-        <div className="summit-date-position">
-          <h3 className="date-position-simple-info">
-            2019 - 08 - 18 · 北京金茂万丽酒店
-          </h3>
-          <p className="position-detail">
-            （北京市东城区王府井大街57号 北京金茂万丽酒店 xx层xx厅）
-          </p>
-        </div>
+        </div> */}
+      <div className="info-container">
+        <h1 className="summit-title white">AElf生态峰会</h1>
+        <h1 className="summit-sub-title white">AElf Summit 2019</h1>
+        <h2 className="summit-slogen white block-center-both-flex">
+          <span className="center-line" />
+          暨AELF生态基金启动仪式
+          <span className="center-line" />
+        </h2>
       </div>
-    );
-  }
+      <div className="summit-date-position">
+        <h3 className="date-position-simple-info white">
+          2019-08-18 · 北京金茂万丽酒店
+        </h3>
+        <p className="position-detail white">
+          （北京市东城区王府井大街57号 北京金茂万丽酒店 xx层xx厅）
+        </p>
+      </div>
+    </div>
+  );
 }
 
-class About extends Component {
-  render() {
-    return (
-      <div
-        className="about-container full-screen-container"
-        id="about"
-        style={{ height: '100vh' }}
+function About() {
+  return (
+    <div className="about-container full-screen-height page-padding" id="about">
+      <p className="bg-words">ABOUT</p>
+      <p className="side-title">AELF SUMMIT 2019</p>
+      <h2 className="text-center about-title">大会简介</h2>
+      {/* <Card className="bg-dark text-white summit-intro-card">
+        <Card.Img className="bg-img" src={LOGO_LG} alt="Card image" />
+        <Card.ImgOverlay>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </Card.Text>
+          <Card.Text>Last updated 3 mins ago</Card.Text>
+        </Card.ImgOverlay>
+      </Card> */}
+      <p className="summit-intro">
+        This year the summit is specifically crafted to bring developers,
+        academic professionals, startups, business decision makers and venture
+        capitalists together to collaborate, partner, and build solutions that
+        create valuable transactions on the VeChainThor Blockchain. releases,
+        expertise and insights sharing, interactive tutorials as well as
+        immersive entertainment, VeChain Summit 2019 will provide the
+        participants with a unique blockchain technology adventure.
+      </p>
+      {/* <section className="charact-group-container">
+        {['特色1', '特色2', '特色3'].map((charact, index) => (
+          <div className="charact-item-container text-center" key={index}>
+            <FontAwesomeIcon icon={['fas', 'fire']} />
+            <span>{`  ${charact}`}</span>
+          </div>
+        ))}
+      </section> */}
+    </div>
+  );
+}
+
+function Speakers() {
+  return (
+    <div className="speakers-container full-screen-container" id="speakers">
+      <Title title="演讲者" />
+      <CardDeck className="speakers-cards block-center">
+        {speakers.map((speaker, index) => (
+          <Card className="speaker-item" key={index}>
+            <Card.Img
+              className="summit-speaker-img"
+              variant="top"
+              src={SPEAKER}
+            />
+            <Card.Body>
+              <Card.Title className="card-title">{speaker.name}</Card.Title>
+              <Card.Text className="card-text">{speaker.speakTitle}</Card.Text>
+              <a className="contact-method-link" href="">
+                <FontAwesomeIcon
+                  icon={speaker.contactMethod}
+                  size="lg"
+                  color="lightblue"
+                />
+              </a>
+            </Card.Body>
+          </Card>
+        ))}
+      </CardDeck>
+    </div>
+  );
+}
+
+function Agenda() {
+  return (
+    <div
+      className="agenda-container full-screen-container bg-black text-center"
+      id="agenda"
+    >
+      <h1 className="title white">2019</h1>
+      <h1 className="subtitle white">大会议程</h1>
+      <p style={{ textAlign: 'center' }}>（2019 - 08 - 18 14:00 ~ 17:00）</p>
+      <Table
+        className="agenda-table block-center"
+        responsive="xl"
+        variant="dark"
+        size="lg"
       >
-        <Title title="About" />
-        <h2 className="text-center about-title">大会简介</h2>
-        <Card className="bg-dark text-white summit-intro-card">
-          <Card.Img className="bg-img" src={LOGO_LG} alt="Card image" />
-          <Card.ImgOverlay>
-            <Card.Title>Card title</Card.Title>
-            <Card.Text>
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </Card.Text>
-            <Card.Text>Last updated 3 mins ago</Card.Text>
-          </Card.ImgOverlay>
-        </Card>
-        <section className="charact-group-container">
-          {['特色1', '特色2', '特色3'].map((charact, index) => (
-            <div className="charact-item-container text-center" key={index}>
-              <FontAwesomeIcon icon={['fas', 'fire']} />
-              {/* <i className="fas fa-fire" /> */}
-              <span>{`  ${charact}`}</span>
-            </div>
+        <tbody>
+          {agendaList.map((agenda, index) => (
+            <tr key={index}>
+              <td>{agenda.time}</td>
+              <td>{agenda.speakTitle}</td>
+              <td>{agenda.speaker}</td>
+            </tr>
           ))}
-        </section>
-      </div>
-    );
-  }
+        </tbody>
+      </Table>
+    </div>
+  );
 }
 
-class Speakers extends Component {
-  render() {
-    return (
-      <div
-        className="speakers-container full-screen-container"
-        id="speakers"
-        style={{ background: 'lightgray', minHeight: '100vh' }}
-      >
-        <Title title="Speakers" />
-        <CardDeck className="speakers-cards block-center">
-          {speakers.map((speaker, index) => (
-            <Card key={index}>
-              <Card.Img
-                className="summit-speaker-img"
-                variant="top"
-                src={LOGO}
-              />
-              <Card.Body>
-                <Card.Title>{speaker.name}</Card.Title>
-                <Card.Text>{speaker.speakTitle}</Card.Text>
-              </Card.Body>
-            </Card>
-          ))}
-        </CardDeck>
-      </div>
-    );
-  }
-}
-
-class Agenda extends Component {
-  render() {
-    return (
-      <div
-        className="agenda-container full-screen-container"
-        id="agenda"
-        style={{ background: '#fff', minHeight: '100vh' }}
-      >
-        <Title title="Agenda" />
-        <Table
-          responsive="lg"
-          variant="dark"
-          size="lg"
-          style={{ width: '80%', margin: '50px auto 0' }}
-        >
-          <thead>
-            <tr>
-              <th colSpan="3">
-                <h1
-                  style={{
-                    textAlign: 'center',
-                    width: '100%',
-                    display: 'block'
-                  }}
-                >
-                  会议日程
-                </h1>
-                <p style={{ textAlign: 'center' }}>
-                  （2019 - 08 - 18 14:00 ~ 17:00）
-                </p>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>00:00 - 00:00</td>
-              <td>开场致辞</td>
-              <td>马昊伯</td>
-            </tr>
-            <tr>
-              <td>00:00 - 00:00</td>
-              <td>开场致辞</td>
-              <td>马昊伯</td>
-            </tr>
-            <tr>
-              <td>00:00 - 00:00</td>
-              <td>开场致辞</td>
-              <td>马昊伯</td>
-            </tr>
-          </tbody>
-        </Table>
-      </div>
-    );
-  }
-}
-
-class Partners extends Component {
-  render() {
-    return (
-      <section
-        className="partners-container full-screen-container bg-gray"
-        id="partners"
-        style={{ minHeight: '100vh' }}
-      >
-        {partners.map((groupOfOneType, indexA) => (
+function Partners() {
+  return (
+    <section
+      className="partners-container full-screen-container bg-gray"
+      id="partners"
+      style={{ minHeight: '100vh' }}
+    >
+      <Title title="参与者" subTitleColor="#011088" />
+      {partners.map((groupOfOneType, indexA) => {
+        const { type } = groupOfOneType;
+        return (
           <section className="margin-top-md" key={indexA}>
-            <h1 className="text-center">{groupOfOneType.type}</h1>
+            {type ? <h1 className="text-center partner-type">{type}</h1> : null}
             <CardColumns className="partici-group block-center">
               {groupOfOneType.members.map((item, indexB) => (
-                <Card className="rounded-lg partner-card" key={indexB}>
-                  <Card.Img
-                    variant="top"
-                    src={item}
-                    style={{ background: 'gray' }}
-                  />
+                <Card
+                  className="rounded-lg partner-card text-center"
+                  key={indexB}
+                >
+                  <Card.Img className="partner-logo" variant="top" src={item} />
                 </Card>
               ))}
             </CardColumns>
           </section>
-        ))}
-      </section>
-    );
-  }
+        );
+      })}
+    </section>
+  );
 }
 
 class Venue extends Component {
@@ -415,11 +486,11 @@ class Venue extends Component {
     const { isMaskShow } = this.state;
     return (
       <div
-        className="venue-container full-screen-container"
+        className="venue-container full-screen-container bg-black"
         id="venue"
         style={{ minHeight: '100vh' }}
       >
-        <Title title="Venue" />
+        <Title title="地址" />
         <div style={{ height: '50vh', margin: '100px 0' }}>
           <Map
             amapkey="788e08def03f95c670944fe2c78fa76f"
@@ -479,11 +550,10 @@ class ContactUs extends Component {
 
     return (
       <div
-        className="contact-us-container full-screen-container bg-gray"
+        className="contact-us-container block-center-both-flex"
         id="contactus"
       >
-        <Title title="Contact Us" />
-        <section className="contact-methods  margin-top-md">
+        {/* <section className="contact-methods  margin-top-md">
           <ul
             className="contact-group block-center rounded-lg"
             style={{
@@ -510,17 +580,12 @@ class ContactUs extends Component {
                     size="3x"
                     className="social-network-icon"
                   />
-                  {/* <i
-                    className={`${method.icon} social-network-icon`}
-                    style={{ fontSize: 50 }}
-                  /> */}
                 </li>
               );
             })}
           </ul>
           {activeItem ? (
             <div className="center-item">
-              {/* <i className={`${activeItem} center-item-icon`} /> */}
               <FontAwesomeIcon
                 icon={activeItem}
                 size="5x"
@@ -529,8 +594,33 @@ class ContactUs extends Component {
               />
             </div>
           ) : null}
+        </section> */}
+        <section className="img-container">
+          <img src={LOGO} alt="" />
         </section>
-        <CopyRight></CopyRight>
+        <section className="contact-methods-container">
+          <h1 className="contact-title">联系我们</h1>
+          <section className="follow-us-container">
+            <p className="follow-word">关注我们</p>
+            <ul className="contact-method-group">
+              {contactMethods.map((method, index) => (
+                <li
+                  className="contact-method-item"
+                  key={index}
+                  onMouseOver={this.handleMouseOver.bind(this, method.icon)}
+                >
+                  <FontAwesomeIcon
+                    icon={method.icon}
+                    size="3x"
+                    className="social-network-icon"
+                    color="white"
+                  />
+                </li>
+              ))}
+            </ul>
+          </section>
+        </section>
+        <CopyRight />
       </div>
     );
   }
@@ -591,7 +681,7 @@ class App extends Component {
           ) !== -1 ? (
             <Venue currentNav={currentNav} />
             ) : (
-              <div id="venue" style={{ height: '100vh' }} />
+            <div id="venue" style={{ height: '100vh' }} />
             )}
           <ContactUs />
         </div>

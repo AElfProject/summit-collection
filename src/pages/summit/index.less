@@ -1,4 +1,7 @@
 // common style
+@themeColor: #0699cd;
+@fontColor: #011088;
+
 .text-center {
   text-align: center;
 }
@@ -7,12 +10,44 @@
   margin: 0 auto;
 }
 
+.block-center-both {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.block-center-both-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-padding {
+  padding: 0 5vw;
+}
+
 .bg-gray {
-  background: rgb(236, 241, 246);
+  background: #ecf1f6;
+}
+
+.bg-black {
+  background: #000;
+}
+
+.main-color {
+  color: @themeColor;
 }
 
 .full-screen-container {
-  padding-top: 100px;
+  padding-top: 11vh;
+  padding-bottom: 3vh;
+}
+
+.full-screen-height {
+  height: 100vh;
 }
 
 .margin-top-md {
@@ -23,46 +58,88 @@
   margin-top: 80px;
 }
 
+.white {
+  color: #fff;
+}
+
 // special for the page
 .index-container {
   overflow-y: scroll; // todo: must?
 }
 
 .navbar {
+  padding: 0;
+  height: 88px;
   background: rgba(0, 0, 0, 0.25);
-  padding: 0 1rem;
+  .logo-container {
+    // display: flex;
+    // align-items: center;
+    // width: 300px;
+    margin-top: -20px;
+    display: inline-block;
+    .prod-intro {
+      width: 188px;
+      padding: 0 0 0 10px;
+      border-left: 1px solid #fff;
+      color: #fff;
+      margin-bottom: 0;
+    }
+  }
   .is-current {
     .nav-link {
-      color: white;
+      color: @themeColor;
     }
+  }
+  .nav-link {
+    color: #fff;
+    font-size: 12px;
   }
   .btn-group {
     float: right;
+    .slash {
+      color: #fff;
+    }
     .lang-btn {
-      border-radius: 50%;
-      background: lightgrey;
+      background: none;
       border: none;
-      margin-right: 5px;
+      color: #fff;
       &.selected {
-        background: lightslategrey;
+        color: @themeColor;
       }
     }
   }
 }
 
 .home-container {
+  position: relative;
+  background: url('../../../public/img/contact-us-bg.png') no-repeat center
+    center; // todo:
+  background-size: cover;
   & > * {
     text-align: center;
   }
-  .summit-title {
-    // font-size: 60px;
-  }
-  .summit-slogen {
-    margin-top: 8rem;
-    // font-size: 40px;
+  .info-container {
+    .summit-title {
+      font-size: 7vw;
+    }
+    .summit-sub-title {
+      font-size: 4.7vw;
+    }
+    .summit-slogen {
+      font-size: 2vw;
+      .center-line {
+        display: inline-block;
+        height: 1px;
+        width: 10vw;
+        background: #fff;
+      }
+    }
   }
   .summit-date-position {
-    margin-top: 40px;
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
     .date-position-simple-info {
       font-size: 1rem;
     }
@@ -73,8 +150,35 @@
 }
 
 .about-container {
+  position: relative;
+  background: #ecf1f6;
+  .bg-words {
+    padding-top: 5vw;
+    color: #dde3e8;
+    font-style: italic;
+    font-size: 10vw;
+    font-weight: 600;
+  }
+  .side-title {
+    position: absolute;
+    right: 15vw;
+    top: 10vw;
+    color: @fontColor;
+    font-size: 1.8vw;
+    font-style: italic;
+  }
   .about-title {
     margin-top: 20px;
+    margin-bottom: 3vw;
+    color: @fontColor;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 3vw;
+  }
+  .summit-intro {
+    margin-left: 5vw;
+    color: @fontColor;
+    font-size: 1.85vw;
   }
   .summit-intro-card {
     width: 60%;
@@ -95,21 +199,120 @@
 }
 
 .speakers-container {
+  background: #000;
+  min-height: 100vh;
   .summit-speaker-img {
-    height: 200px;
+    width: 150px;
+    height: 150px;
     background: gray;
   }
   .speakers-cards {
     width: 80%;
     margin-top: 40px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .speaker-item {
+      padding: 10px;
+      padding-bottom: 0;
+      border-radius: 3px;
+      overflow: hidden;
+      font-style: italic;
+      .card-body {
+        padding: 0.5rem 0;
+      }
+      .card-title {
+        font-weight: 400;
+      }
+      .card-text {
+        width: 85%;
+        font-weight: bold;
+        color: #000;
+      }
+      .contact-method-link {
+        position: absolute;
+        right: 1vw;
+        bottom: 4.5vw;
+      }
+    }
+  }
+}
+
+.agenda-container {
+  min-height: 100vh;
+  padding-bottom: 3vh;
+  .title {
+    position: relative;
+    display: inline-block;
+    font-size: 7vw;
+    &:after {
+      content: 'AELF SUMMIT';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      font-size: 1vw;
+      color: @themeColor;
+    }
+  }
+  .subtitle {
+    margin-top: 5vh;
+  }
+  .agenda-table {
+    width: 60%;
+    tr {
+      > td {
+        text-align: center;
+        vertical-align: middle;
+        width: 40%;
+        &:first-child,
+        &:last-child {
+          width: 30%;
+        }
+      }
+      &:nth-child(2n + 1) {
+        > td {
+          background: #292929;
+          &:first-child {
+            background: linear-gradient(to left, #02f3fc, #0243fb);
+          }
+        }
+      }
+      &:nth-child(2n) {
+        > td {
+          background: #000;
+          &:first-child {
+            background: linear-gradient(to left, #017a7e, #01227e);
+          }
+        }
+      }
+    }
   }
 }
 
 .partners-container {
+  .partner-type {
+    margin-bottom: 5vh;
+    color: #89898a;
+    font-style: italic;
+    letter-spacing: 1vw;
+    &:before,
+    &:after {
+      display: inline-block;
+      vertical-align: middle;
+      content: '';
+      width: 26vw;
+      height: 2px;
+      margin: 0 2vw;
+      background: #babdc0;
+    }
+  }
   .partici-group {
     width: 80%;
     .partner-card {
       overflow: hidden;
+      padding: 12px;
+      .partner-logo {
+        width: 80px;
+      }
     }
   }
 }
@@ -146,26 +349,56 @@
 .contact-us-container {
   position: relative;
   height: 100vh;
-  .contact-methods {
-    position: relative;
-    .contact-item {
-      position: absolute; // require to make it arrange as a circle
-      top: 50%; // to make it align center
-      left: 50%;
+  background: url('../../../public/img/contact-us-bg.png') no-repeat center
+    center; // todo:
+  background-size: cover;
+  // .contact-methods {
+  //   position: relative;
+  //   .contact-item {
+  //     position: absolute; // require to make it arrange as a circle
+  //     top: 50%; // to make it align center
+  //     left: 50%;
+  //   }
+  // }
+  // .social-network-icon:hover {
+  //   color: lightseagreen;
+  //   cursor: pointer;
+  // }
+  // .center-item {
+  //   position: absolute;
+  //   left: 50%;
+  //   top: 50%;
+  //   transform: translate(-50%, -50%);
+  //   .center-item-icon {
+  //     font-size: 100px;
+  //     color: lightseagreen;
+  //   }
+  // }
+  .img-container {
+    margin-right: 30px;
+  }
+  .contact-methods-container {
+    width: 25%;
+    .contact-title {
+      color: #fff;
+      font-style: italic;
     }
-  }
-  .social-network-icon:hover {
-    color: lightseagreen;
-    cursor: pointer;
-  }
-  .center-item {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    .center-item-icon {
-      font-size: 100px;
-      color: lightseagreen;
+    .follow-us-container {
+      padding: 2vh 0;
+      border-top: 2px solid #81828c;
+      border-bottom: 2px solid #81828c;
+      .follow-word {
+        color: #fff;
+        font-weight: bold;
+      }
+      .contact-method-group {
+        .contact-method-item {
+          display: inline-block;
+          width: 20%;
+          text-align: center;
+          margin-bottom: 10px;
+        }
+      }
     }
   }
 }
@@ -177,19 +410,93 @@
 }
 
 @media (max-width: 576px) {
+  .navbar {
+    .logo-container {
+      height: 88px;
+      margin-top: 0;
+    }
+    .navbar-toggler {
+      margin-right: 10px;
+    }
+    .nav {
+      background: rgba(0, 0, 0, 0.25);
+      .nav-item {
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
+      }
+    }
+  }
   .full-screen-container {
     padding: 30px 0;
   }
   .home-container {
-    padding-top: 20vh;
     .summit-title {
       margin-top: 8vh;
     }
     .summit-slogen {
-      margin-top: 8vh;
+      margin-top: 2vh;
     }
     .summit-date-position {
       margin-top: 7vh;
+    }
+  }
+  .agenda-container {
+    .agenda-table {
+      width: 90%;
+    }
+    .title {
+      font-size: 20vw;
+    }
+  }
+  .about-container {
+    .about-title {
+      font-size: 10vw;
+    }
+    .summit-intro {
+      font-size: 4vw;
+    }
+  }
+  .speakers-container {
+    .speakers-cards {
+      width: 95%;
+      .speaker-item {
+        box-sizing: border-box;
+        width: 47%;
+        &:nth-child(2n + 1) {
+          margin-right: 4%;
+        }
+      }
+    }
+  }
+  .partners-container {
+    .partici-group {
+      width: 90%;
+      .partner-card {
+        display: inline-block;
+        width: 47%;
+        &:nth-child(2n + 1) {
+          margin-right: 4%;
+        }
+      }
+    }
+  }
+  .contact-us-container {
+    flex-direction: column;
+    .img-container {
+      margin-bottom: 20px;
+    }
+    .contact-methods-container {
+      width: 80%;
+    }
+  }
+  .page-title-container {
+    .page-subtitle {
+      font-size: 6.5vw !important;
+    }
+    .page-title {
+      margin-top: 30px;
+      font-size: 10vw !important;
     }
   }
 }
