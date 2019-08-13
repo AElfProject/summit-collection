@@ -45,7 +45,7 @@ const baseConfig = {
         test: /\.less$/,
         use: [
           'style-loader', // for hot refresh style
-          // MiniCssExtractPlugin.loader, // todo: comment this to make style-loader work 
+          // MiniCssExtractPlugin.loader, // todo: comment this to make style-loader work
           'css-loader',
           'postcss-loader',
           {
@@ -62,7 +62,7 @@ const baseConfig = {
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif|svg|ico)$/i,
         use: [
           {
             loader: 'url-loader',
@@ -84,14 +84,6 @@ const baseConfig = {
             }
           }
         ]
-      },
-      {
-        test: /\.ico$/,
-        loader: 'url-loader',
-        options: {
-          limit: 1,
-          name: 'img/[name].[ext]'
-        }
       }
     ]
   },
@@ -109,7 +101,8 @@ const baseConfig = {
         chunks,
         name,
         title: config.title,
-        minify: { //压缩HTML文件
+        minify: {
+          //压缩HTML文件
           removeComments: true, //移除HTML中的注释
           collapseWhitespace: false //删除空白符与换行符
         },
