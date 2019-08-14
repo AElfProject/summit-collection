@@ -30,6 +30,7 @@ import LOGO from '@img/logo.png';
 import SPEAKER from '@img/speaker.png';
 import PARTNER_LOGO from '@img/partner-logo.png';
 import WECHAT_QRCODE from '@img/wechat-qrcode.jpg';
+import BIYONG_ICON from '@img/biyong-icon.jpg';
 import Title from '@components/Title/';
 import CopyRight from '@components/CopyRight/';
 import { isMac, isPC } from '@utils/tools';
@@ -186,35 +187,54 @@ const partners = [
 const contactMethods = [
   {
     name: 'wechat',
-    icon: ['fab', 'weixin']
+    icon: ['fab', 'weixin'],
+    link: null
   },
   {
     name: 'facebook',
-    icon: ['fab', 'facebook']
+    icon: ['fab', 'facebook'],
+    link: 'https://www.facebook.com/aelfofficial/'
+  },
+  {
+    name: 'medium',
+    icon: ['fab', 'medium'],
+    link: 'https://medium.com/aelfblockchain'
   },
   {
     name: 'reddit',
-    icon: ['fab', 'reddit']
+    icon: ['fab', 'reddit'],
+    link: 'https://www.reddit.com/r/aelfofficial/'
   },
   {
     name: 'github',
-    icon: ['fab', 'github']
+    icon: ['fab', 'github'],
+    link: 'https://github.com/aelfProject'
   },
   {
     name: 'youtube',
-    icon: ['fab', 'youtube']
+    icon: ['fab', 'youtube'],
+    link: 'https://www.youtube.com/c/aelfblockchain'
   },
   {
     name: 'linkedin',
-    icon: ['fab', 'linkedin']
+    icon: ['fab', 'linkedin'],
+    link: 'https://www.linkedin.com/company/aelfblockchain/'
   },
   {
     name: 'twitter',
-    icon: ['fab', 'twitter']
+    icon: ['fab', 'twitter'],
+    link: 'https://twitter.com/aelfblockchain'
   },
   {
     name: 'telegram',
-    icon: ['fab', 'telegram']
+    icon: ['fab', 'telegram'],
+    link: 'https://t.me/aelfblockchain'
+  },
+  {
+    name: 'biyong',
+    // icon: ['fab', 'biyong'],
+    link: 'https://0.plus/#/aelf_chs',
+    iconSrc: BIYONG_ICON
   }
 ];
 
@@ -623,27 +643,40 @@ class ContactUs extends Component {
           <section className="follow-us-container">
             <p className="follow-word">关注我们</p>
             <ul className="contact-method-group">
-              {contactMethods.map((method, index) => (
-                <li
-                  className="contact-method-item"
-                  key={index}
-                  // onMouseOver={this.handleMouseOver.bind(this, method.icon)}
-                  onClick={
-                    method.name === 'wechat'
-                      ? () => {
-                        this.setState({ isModalShow: true });
-                      }
-                      : null
-                  }
-                >
-                  <FontAwesomeIcon
-                    icon={method.icon}
-                    size="3x"
-                    className="social-network-icon"
-                    color="white"
-                  />
-                </li>
-              ))}
+              {contactMethods.map((method, index) => {
+                const { icon, iconSrc, link } = method;
+                return (
+                  <li
+                    className="contact-method-item"
+                    key={index}
+                    // onMouseOver={this.handleMouseOver.bind(this, method.icon)}
+                    onClick={
+                      method.name === 'wechat'
+                        ? () => {
+                          this.setState({ isModalShow: true });
+                        }
+                        : null
+                    }
+                  >
+                    <a href={link}>
+                      {icon ? (
+                        <FontAwesomeIcon
+                          icon={icon}
+                          size="3x"
+                          className="social-network-icon"
+                          color="white"
+                        />
+                      ) : (
+                        <img
+                          src={iconSrc}
+                          alt=""
+                          style={{ marginTop: '-20px' }}
+                        />
+                      )}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </section>
         </section>
