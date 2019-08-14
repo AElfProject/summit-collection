@@ -1,4 +1,6 @@
-html, body{
+// use to forbid page scroll
+html,
+body {
   overflow: hidden;
   height: 100%;
 }
@@ -9,6 +11,9 @@ html, body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  // why do I use this way:
+  // I was tring to make the background has some opacity, and keep the words untransparent at the same time
+  // in this case, there is a way to achieve it is to use 'absolute' background and give it an 'opacity' attribute
   .bg-img-container {
     position: absolute;
     width: 100%;
