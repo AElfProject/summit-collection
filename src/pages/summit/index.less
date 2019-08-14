@@ -37,8 +37,16 @@
   background: #000;
 }
 
+.bg-main-color {
+  background: @themeColor;
+}
+
 .main-color {
   color: @themeColor;
+}
+
+.black-color {
+  color: #000;
 }
 
 .full-screen-container {
@@ -92,7 +100,7 @@
   }
   .nav-link {
     color: #fff;
-    font-size: 12px;
+    font-size: 14px;
   }
   .btn-group {
     float: right;
@@ -112,8 +120,7 @@
 
 .home-container {
   position: relative;
-  background: url('../../../public/img/contact-us-bg.png') no-repeat center
-    center; // todo:
+  background: url('../../../public/img/home-bg.jpg') no-repeat center center; // todo:
   background-size: cover;
   & > * {
     text-align: center;
@@ -127,10 +134,15 @@
     }
     .summit-slogen {
       font-size: 2vw;
-      .center-line {
+      white-space: nowrap;
+      &:before,
+      &:after {
         display: inline-block;
-        height: 1px;
-        width: 10vw;
+        vertical-align: middle;
+        content: '';
+        width: 5vw;
+        height: 2px;
+        margin: 0 2vw;
         background: #fff;
       }
     }
@@ -168,7 +180,7 @@
     font-style: italic;
   }
   .about-title {
-    margin-top: 20px;
+    margin-top: 5vh;
     margin-bottom: 3vw;
     color: @fontColor;
     font-style: italic;
@@ -299,7 +311,7 @@
       display: inline-block;
       vertical-align: middle;
       content: '';
-      width: 26vw;
+      width: 23%;
       height: 2px;
       margin: 0 2vw;
       background: #babdc0;
@@ -323,9 +335,19 @@
     &:active {
       cursor: grabbing;
     }
+    .amap-info-content {
+      padding: 20px;
+      color: #000;
+      background: rgba(255, 255, 255, 0.6);
+      font-weight: 400;
+    }
+    .amap-info-sharp {
+      display: none;
+    }
   }
   .zoom-tip-mask {
     position: absolute;
+    z-index: 999;
     left: 0;
     right: 0;
     top: 0;
@@ -497,6 +519,50 @@
     .page-title {
       margin-top: 30px;
       font-size: 10vw !important;
+    }
+  }
+  // improve the weight of style code below
+  .modal-dialog {
+    width: 80%;
+    margin: 0 auto;
+    .modal-content {
+      background: url('../../../public/img/mobile-modal-bg.png') no-repeat
+        center center; // todo:
+      .modal-body {
+        .modal-words {
+          font-size: 15px;
+          letter-spacing: 2px;
+        }
+      }
+    }
+  }
+}
+
+.modal-content {
+  padding: 30px 0 10px;
+  background: #000;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.25);
+  border-radius: 3px;
+  overflow: hidden;
+  .modal-body {
+    text-align: center;
+    .modal-words {
+      margin-bottom: 30px;
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: 5px;
+    }
+    .modal-confirm-btn {
+      font-size: 15px;
+      padding: 10px 30px;
+      letter-spacing: 5px;
+      border: 1px solid @themeColor;
+      &:hover {
+        color: @themeColor;
+      }
+    }
+    .img-container {
+      margin-bottom: 30px;
     }
   }
 }

@@ -13,6 +13,8 @@ import Table from 'react-bootstrap/Table';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
 import CardColumns from 'react-bootstrap/CardColumns';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import { Map, Marker, InfoWindow } from 'react-amap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -27,10 +29,10 @@ import './index.less';
 import LOGO from '@img/logo.png';
 import SPEAKER from '@img/speaker.png';
 import PARTNER_LOGO from '@img/partner-logo.png';
-// import LOGO_LG from '@img/logo-lg.png';
+import WECHAT_QRCODE from '@img/wechat-qrcode.jpg';
 import Title from '@components/Title/';
 import CopyRight from '@components/CopyRight/';
-import { isMac } from '@utils/tools';
+import { isMac, isPC } from '@utils/tools';
 import i18n from './i18n';
 // const ReactAmap = r => require.ensure([], () => r(require('react-amap')));
 // const { Map, Marker, InfoWindow } = ReactAmap;
@@ -183,27 +185,35 @@ const partners = [
 
 const contactMethods = [
   {
+    name: 'wechat',
     icon: ['fab', 'weixin']
   },
   {
+    name: 'facebook',
     icon: ['fab', 'facebook']
   },
   {
+    name: 'reddit',
     icon: ['fab', 'reddit']
   },
   {
+    name: 'github',
     icon: ['fab', 'github']
   },
   {
+    name: 'youtube',
     icon: ['fab', 'youtube']
   },
   {
+    name: 'linkedin',
     icon: ['fab', 'linkedin']
   },
   {
+    name: 'twitter',
     icon: ['fab', 'twitter']
   },
   {
+    name: 'telegram',
     icon: ['fab', 'telegram']
   }
 ];
@@ -244,12 +254,14 @@ class SummitNav extends Component {
     return (
       <Navbar fixed="top" variant="dark" expand="lg">
         <div className="logo-container">
-          <div className="img-container">
-            <img src={LOGO} alt="" width="200" />
-          </div>
-          {/* <p className="prod-intro">
+          <a href="https://aelf.io">
+            <div className="img-container">
+              <img src={LOGO} alt="" width="200" />
+            </div>
+            {/* <p className="prod-intro">
             Cloud-Powered Public BlockChain for Business
           </p> */}
+          </a>
         </div>
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
@@ -311,7 +323,7 @@ class SummitNav extends Component {
   }
 }
 
-function Home(props) {
+function Home() {
   return (
     <div
       className="home-container block-center-both-flex full-screen-height"
@@ -324,9 +336,7 @@ function Home(props) {
         <h1 className="summit-title white">AElf生态峰会</h1>
         <h1 className="summit-sub-title white">AElf Summit 2019</h1>
         <h2 className="summit-slogen white block-center-both-flex">
-          <span className="center-line" />
           暨AELF生态基金启动仪式
-          <span className="center-line" />
         </h2>
       </div>
       <div className="summit-date-position">
@@ -496,21 +506,28 @@ class Venue extends Component {
             amapkey="788e08def03f95c670944fe2c78fa76f"
             plugins={['ToolBar']}
             mapStyle="amap://styles/grey"
+            viewMode="3D"
+            pitch="45"
+            zoom="18"
+            center={this.markerPosition}
           >
             <Marker
               position={this.markerPosition}
               clickable
               animation={
                 currentNav === 'venue'
-                  ? 'AMAP_ANIMATION_DROP'
+                  ? 'AMAP_ANIMATION_BOUNCE'
                   : 'AMAP_ANIMATION_NONE'
               }
             />
             <InfoWindow
               position={this.markerPosition}
-              // visible
-              // isCustom={false}
+              offset={[200, -10]}
+              visible
+              // isCustom
               content="北京市东城区王府井大街57号<br/>北京金茂万丽酒店  xx层xx厅"
+              showShadow
+              // autoMove
             />
             {isMaskShow ? (
               <div
@@ -535,7 +552,8 @@ class ContactUs extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeItem: null
+      activeItem: null,
+      isModalShow: false
     };
   }
 
@@ -546,7 +564,7 @@ class ContactUs extends Component {
   }
 
   render() {
-    const { activeItem } = this.state;
+    const { activeItem, isModalShow } = this.state;
 
     return (
       <div
@@ -596,7 +614,9 @@ class ContactUs extends Component {
           ) : null}
         </section> */}
         <section className="img-container">
-          <img src={LOGO} alt="" />
+          <a href="https://aelf.io">
+            <img src={LOGO} alt="" />
+          </a>
         </section>
         <section className="contact-methods-container">
           <h1 className="contact-title">联系我们</h1>
@@ -607,7 +627,14 @@ class ContactUs extends Component {
                 <li
                   className="contact-method-item"
                   key={index}
-                  onMouseOver={this.handleMouseOver.bind(this, method.icon)}
+                  // onMouseOver={this.handleMouseOver.bind(this, method.icon)}
+                  onClick={
+                    method.name === 'wechat'
+                      ? () => {
+                        this.setState({ isModalShow: true });
+                      }
+                      : null
+                  }
                 >
                   <FontAwesomeIcon
                     icon={method.icon}
@@ -621,6 +648,46 @@ class ContactUs extends Component {
           </section>
         </section>
         <CopyRight />
+        <Modal
+          // {...props}
+          show={isModalShow}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          {isPC() ? (
+            <Modal.Body>
+              <p className="modal-words main-color">
+                微信搜索“aelf社区”官方微信公众号，获取更多资讯！
+              </p>
+              <Button
+                className="modal-confirm-btn black-color bg-main-color"
+                onClick={() => {
+                  this.setState({ isModalShow: false });
+                }}
+              >
+                确认
+              </Button>
+            </Modal.Body>
+          ) : (
+            <Modal.Body>
+              <div className="img-container">
+                <img src={WECHAT_QRCODE} alt="" width="180" />
+              </div>
+              <p className="modal-words main-color">
+                扫码关注“aelf社区”官方微信公众号，了解更多资讯！
+              </p>
+              <Button
+                className="modal-confirm-btn black-color bg-main-color"
+                onClick={() => {
+                  this.setState({ isModalShow: false });
+                }}
+              >
+                确认
+              </Button>
+            </Modal.Body>
+          )}
+        </Modal>
       </div>
     );
   }
@@ -681,7 +748,7 @@ class App extends Component {
           ) !== -1 ? (
             <Venue currentNav={currentNav} />
             ) : (
-            <div id="venue" style={{ height: '100vh' }} />
+              <div id="venue" style={{ height: '100vh' }} />
             )}
           <ContactUs />
         </div>
