@@ -110,6 +110,9 @@
     "*.{js,jsx}": "eslint"
   },
   "reactSnap": {
-    "source": "dist"
+    "source": "dist",
+    "puppeteerArgs": [
+      "--no-sandbox"
+    ]
   }
 }
