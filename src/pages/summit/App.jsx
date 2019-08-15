@@ -260,7 +260,7 @@ class SummitNav extends Component {
 
   handleAnchorUpdate(ele) {
     const { onAnchorUpdate } = this.props;
-    typeof onAnchorUpdate === 'function' ? onAnchorUpdate(ele) : null;
+    (typeof onAnchorUpdate === 'function') && onAnchorUpdate(ele);
   }
 
   handleCollapse() {
@@ -505,65 +505,82 @@ class Venue extends Component {
     this.state = {
       isMaskShow: true
     };
+    this.hasRenderRealComp = false;
+    this.shouldDisplay = this.shouldDisplay.bind(this);
   }
 
   handleClick() {
     this.setState({ isMaskShow: false });
   }
 
+  shouldDisplay() {
+    const { currentNav } = this.props;
+    return ['agenda', 'partners', 'venue', 'contactus'].findIndex(
+      item => item === currentNav
+    ) !== -1;
+  }
+
   render() {
+    const { hasRenderRealComp } = this;
     const { currentNav } = this.props;
     const { isMaskShow } = this.state;
+    const displayFlag = this.shouldDisplay();
+    if (!hasRenderRealComp && displayFlag) this.hasRenderRealComp = true;
+
     return (
-      <div
+      <section
         className="venue-container full-screen-container bg-black"
         id="venue"
         style={{ minHeight: '100vh' }}
       >
-        <Title title="地址" />
-        <div style={{ height: '50vh', margin: '100px 0' }}>
-          <Map
-            amapkey="788e08def03f95c670944fe2c78fa76f"
-            plugins={['ToolBar']}
-            mapStyle="amap://styles/grey"
-            viewMode="3D"
-            pitch="45"
-            zoom="18"
-            center={this.markerPosition}
-          >
-            <Marker
-              position={this.markerPosition}
-              clickable
-              animation={
+        {(displayFlag || hasRenderRealComp) ? (
+          <div className="temp-container">
+            <Title title="地址" />
+            <div style={{ height: '50vh', margin: '100px 0' }}>
+              <Map
+                amapkey="788e08def03f95c670944fe2c78fa76f"
+                plugins={['ToolBar']}
+                mapStyle="amap://styles/grey"
+                viewMode="3D"
+                pitch="45"
+                zoom="18"
+                center={this.markerPosition}
+              >
+                <Marker
+                  position={this.markerPosition}
+                  clickable
+                  animation={
                 currentNav === 'venue'
                   ? 'AMAP_ANIMATION_BOUNCE'
                   : 'AMAP_ANIMATION_NONE'
               }
-            />
-            <InfoWindow
-              position={this.markerPosition}
-              offset={[200, -10]}
-              visible
+                />
+                <InfoWindow
+                  position={this.markerPosition}
+                  offset={[200, -10]}
+                  visible
               // isCustom
-              content="北京市东城区王府井大街57号<br/>北京金茂万丽酒店  xx层xx厅"
-              showShadow
-              // autoMove
-            />
-            {isMaskShow ? (
-              <div
-                className="zoom-tip-mask"
-                role="presentation"
-                onClick={this.handleClick.bind(this)}
-                onKeyDown={this.handleClick.bind(this)}
-              >
-                {isMac()
-                  ? '使用双指移动地图'
-                  : '按住 Ctrl 并滚动鼠标滚轮才可缩放地图'}
-              </div>
-            ) : null}
-          </Map>
-        </div>
-      </div>
+                  content="北京市东城区王府井大街57号<br/>北京金茂万丽酒店  xx层xx厅"
+                  showShadow
+                />
+                {isMaskShow ? (
+                  <div
+                    className="zoom-tip-mask"
+                    role="presentation"
+                    onClick={this.handleClick.bind(this)}
+                    onKeyDown={this.handleClick.bind(this)}
+                  >
+                    {isMac()
+                      ? '使用双指移动地图'
+                      : '按住 Ctrl 并滚动鼠标滚轮才可缩放地图'}
+                  </div>
+                ) : null}
+              </Map>
+            </div>
+          </div>
+        )
+          : null}
+      </section>
     );
   }
 }
@@ -775,14 +792,7 @@ class App extends Component {
           <Speakers />
           <Agenda />
           <Partners />
-          {/* TODO: 延迟加载组件的更好方法？ */}
-          {['agenda', 'partners', 'venue', 'contactus'].findIndex(
-            item => item === currentNav
-          ) !== -1 ? (
-            <Venue currentNav={currentNav} />
-            ) : (
-              <div id="venue" style={{ height: '100vh' }} />
-            )}
+          <Venue currentNav={currentNav} />
           <ContactUs />
         </div>
       </div>
