@@ -44,8 +44,7 @@ const baseConfig = {
       {
         test: /\.less$/,
         use: [
-          'style-loader', // for hot refresh style
-          // MiniCssExtractPlugin.loader, // todo: comment this to make style-loader work
+          isProdMode ? MiniCssExtractPlugin.loader : 'style-loader', // style-loader works for hot refresh style
           'css-loader',
           'postcss-loader',
           {
