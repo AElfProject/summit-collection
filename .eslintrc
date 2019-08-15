@@ -12,15 +12,8 @@
     "es6": true,
     "browser": true
   },
-  "plugins": [
-    "react",
-    "babel",
-    "import",
-    "jsx-a11y"
-  ],
-  "extends": [
-    "eslint-config-airbnb"
-  ],
+  "plugins": ["react", "babel", "import", "jsx-a11y"],
+  "extends": ["eslint-config-airbnb"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -36,8 +29,16 @@
     "no-underscore-dangle": "off",
     "no-bitwise": "off",
     "no-mixed-operators": "off",
-    "max-len": ["error", { "code": 120}],
+    "max-len": ["error", { "code": 120 }],
     "class-methods-use-this": "off",
     "no-plusplus": "off"
+  },
+  "settings": {
+    // eslint-import-resolver-webpack 让eslint，使用webpack的resolver来检查package是否引用正确
+    "import/resolver": {
+      "webpack": {
+        "config": "./build/webpack.base.js"
+      }
+    }
   }
 }
