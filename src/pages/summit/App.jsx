@@ -8,7 +8,6 @@ import 'minireset.css/minireset.min.css';
 import '@public/css/bootstrap.min.css';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-// import { Nav, NavBar } from 'react-bootstrap'; // todo: this way is less ideally
 import Table from 'react-bootstrap/Table';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
@@ -18,7 +17,9 @@ import Button from 'react-bootstrap/Button';
 import { Map, Marker, InfoWindow } from 'react-amap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
+import {
+  faFacebook, faWeixin, faMedium, faYoutube, faGithub, faReddit, faLinkedin, faTwitter, faTelegram
+} from '@fortawesome/free-brands-svg-icons';
 import { faFire } from '@fortawesome/free-solid-svg-icons';
 import Scrollspy from 'react-scrollspy';
 import { Translation } from 'react-i18next';
@@ -38,7 +39,7 @@ import i18n from './i18n';
 // const ReactAmap = r => require.ensure([], () => r(require('react-amap')));
 // const { Map, Marker, InfoWindow } = ReactAmap;
 
-library.add(fab, faFire);
+library.add(faFacebook, faWeixin, faMedium, faYoutube, faGithub, faReddit, faLinkedin, faTwitter, faTelegram, faFire);
 
 const navs = [
   {
