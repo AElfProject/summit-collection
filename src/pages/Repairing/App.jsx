@@ -9,7 +9,7 @@ function Repairing() {
       <div className="bg-img-container" />
       <h1 className="page-title">页面正在进行升级维护:)</h1>
       <p className="tips">请等会儿再来瞅瞅吧</p>
-      <CopyRight style={{ color: '#fff' }} />
+      <CopyRight />
     </div>
   );
 }
