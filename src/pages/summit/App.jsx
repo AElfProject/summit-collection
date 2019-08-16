@@ -2,10 +2,11 @@
  * @file App.jsx
  * @author atom-yang
  */
-import React, { Component } from 'react';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { Component, PureComponent } from 'react';
+import PropTypes from 'prop-types';
+// import 'bootstrap/dist/css/bootstrap.min.css'; // default bootstrap css
 import 'minireset.css/minireset.min.css';
-import '@public/css/bootstrap.min.css';
+import '@public/css/bootstrap.min.css'; // bootstrap css with custom theme, eg font-family...
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Table from 'react-bootstrap/Table';
@@ -18,7 +19,15 @@ import { Map, Marker, InfoWindow } from 'react-amap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
-  faFacebook, faWeixin, faMedium, faYoutube, faGithub, faReddit, faLinkedin, faTwitter, faTelegram
+  faFacebook,
+  faWeixin,
+  faMedium,
+  faYoutube,
+  faGithub,
+  faReddit,
+  faLinkedin,
+  faTwitter,
+  faTelegram
 } from '@fortawesome/free-brands-svg-icons';
 import { faFire } from '@fortawesome/free-solid-svg-icons';
 import Scrollspy from 'react-scrollspy';
@@ -39,7 +48,18 @@ import i18n from './i18n';
 // const ReactAmap = r => require.ensure([], () => r(require('react-amap')));
 // const { Map, Marker, InfoWindow } = ReactAmap;
 
-library.add(faFacebook, faWeixin, faMedium, faYoutube, faGithub, faReddit, faLinkedin, faTwitter, faTelegram, faFire);
+library.add(
+  faFacebook,
+  faWeixin,
+  faMedium,
+  faYoutube,
+  faGithub,
+  faReddit,
+  faLinkedin,
+  faTwitter,
+  faTelegram,
+  faFire
+);
 
 const navs = [
   {
@@ -76,31 +96,37 @@ const navTitleGroup = navs.map(item => item.title.toLocaleLowerCase());
 
 const speakers = [
   {
+    id: 1,
     name: 'alex',
     speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
     contactMethod: ['fab', 'facebook']
   },
   {
+    id: 2,
     name: 'alex',
     speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
     contactMethod: ['fab', 'facebook']
   },
   {
+    id: 3,
     name: 'alex',
     speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
     contactMethod: ['fab', 'facebook']
   },
   {
+    id: 4,
     name: 'alex',
     speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
     contactMethod: ['fab', 'facebook']
   },
   {
+    id: 5,
     name: 'alex',
     speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
     contactMethod: ['fab', 'facebook']
   },
   {
+    id: 6,
     name: 'alex',
     speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
     contactMethod: ['fab', 'facebook']
@@ -109,31 +135,37 @@ const speakers = [
 
 const agendaList = [
   {
+    id: 1,
     time: '14:00-17:00',
     speakTitle: 'AElf是如何实现高Tps的',
     speaker: '马昊博（XXXXX）'
   },
   {
+    id: 2,
     time: '14:00-17:00',
     speakTitle: 'AElf是如何实现高Tps的',
     speaker: '马昊博（XXXXX）'
   },
   {
+    id: 3,
     time: '14:00-17:00',
     speakTitle: 'AElf是如何实现高Tps的',
     speaker: '马昊博（XXXXX）'
   },
   {
+    id: 4,
     time: '14:00-17:00',
     speakTitle: 'AElf是如何实现高Tps的',
     speaker: '马昊博（XXXXX）'
   },
   {
+    id: 5,
     time: '14:00-17:00',
     speakTitle: 'AElf是如何实现高Tps的',
     speaker: '马昊博（XXXXX）'
   },
   {
+    id: 6,
     time: '14:00-17:00',
     speakTitle: 'AElf是如何实现高Tps的',
     speaker: '马昊博（XXXXX）'
@@ -142,96 +174,190 @@ const agendaList = [
 
 const partners = [
   {
+    id: 1,
     type: null,
     members: [
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO
+      {
+        id: 1,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 2,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 3,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 4,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 5,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 6,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 7,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 8,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 9,
+        logo: PARTNER_LOGO
+      }
     ]
   },
   {
+    id: 2,
     type: '媒体',
     members: [
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO
+      {
+        id: 1,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 2,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 3,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 4,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 5,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 6,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 7,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 8,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 9,
+        logo: PARTNER_LOGO
+      }
     ]
   },
   {
+    id: 3,
     type: '社区支持',
     members: [
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO,
-      PARTNER_LOGO
+      {
+        id: 1,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 2,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 3,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 4,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 5,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 6,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 7,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 8,
+        logo: PARTNER_LOGO
+      },
+      {
+        id: 9,
+        logo: PARTNER_LOGO
+      }
     ]
   }
 ];
 
 const contactMethods = [
   {
+    id: 1,
     name: 'wechat',
     icon: ['fab', 'weixin'],
     link: null
   },
   {
+    id: 2,
     name: 'facebook',
     icon: ['fab', 'facebook'],
     link: 'https://www.facebook.com/aelfofficial/'
   },
   {
+    id: 3,
     name: 'medium',
     icon: ['fab', 'medium'],
     link: 'https://medium.com/aelfblockchain'
   },
   {
+    id: 4,
     name: 'reddit',
     icon: ['fab', 'reddit'],
     link: 'https://www.reddit.com/r/aelfofficial/'
   },
   {
+    id: 5,
     name: 'github',
     icon: ['fab', 'github'],
     link: 'https://github.com/aelfProject'
   },
   {
+    id: 6,
     name: 'youtube',
     icon: ['fab', 'youtube'],
     link: 'https://www.youtube.com/c/aelfblockchain'
   },
   {
+    id: 7,
     name: 'linkedin',
     icon: ['fab', 'linkedin'],
     link: 'https://www.linkedin.com/company/aelfblockchain/'
   },
   {
+    id: 8,
     name: 'twitter',
     icon: ['fab', 'twitter'],
     link: 'https://twitter.com/aelfblockchain'
   },
   {
+    id: 9,
     name: 'telegram',
     icon: ['fab', 'telegram'],
     link: 'https://t.me/aelfblockchain'
   },
   {
+    id: 10,
     name: 'biyong',
     // icon: ['fab', 'biyong'],
     link: 'https://0.plus/#/aelf_chs',
@@ -241,10 +367,12 @@ const contactMethods = [
 
 const langs = [
   {
+    id: 1,
     type: 'zh-CN',
     displayName: '中'
   },
   {
+    id: 2,
     type: 'en',
     displayName: 'EN'
   }
@@ -257,11 +385,13 @@ class SummitNav extends Component {
       currentLang: 'zh-CN',
       isCollapsed: false
     };
+    this.handleCollapse = this.handleCollapse.bind(this);
+    this.handleAnchorUpdate = this.handleAnchorUpdate.bind(this);
   }
 
   handleAnchorUpdate(ele) {
     const { onAnchorUpdate } = this.props;
-    (typeof onAnchorUpdate === 'function') && onAnchorUpdate(ele);
+    if (typeof onAnchorUpdate === 'function') onAnchorUpdate(ele);
   }
 
   handleCollapse() {
@@ -287,14 +417,14 @@ class SummitNav extends Component {
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
           data-toggle="collapse"
-          onClick={this.handleCollapse.bind(this)}
+          onClick={this.handleCollapse}
         />
         <Navbar.Collapse id="basic-navbar-nav" in={isCollapsed}>
           <Scrollspy
             className="nav block-center mr-auto"
             items={navTitleGroup}
             currentClassName="is-current"
-            onUpdate={this.handleAnchorUpdate.bind(this)}
+            onUpdate={this.handleAnchorUpdate}
             offset={-2} // use the offset to fix a bug of ScrollSpy
           >
             {navs.map(nav => (
@@ -306,7 +436,7 @@ class SummitNav extends Component {
                       // do the judge to avoid nav flash in PC
                       onClick={
                         document.body.clientWidth < 992
-                          ? this.handleCollapse.bind(this)
+                          ? this.handleCollapse
                           : null
                       }
                     >
@@ -321,7 +451,7 @@ class SummitNav extends Component {
             {langs.map((lang, index) => {
               const isActive = currentLang === lang.type;
               return (
-                <span className="btn-container" key={index}>
+                <span className="btn-container" key={lang.id}>
                   {index !== 0 ? <span className="slash">/</span> : null}
                   <button
                     type="button"
@@ -343,6 +473,10 @@ class SummitNav extends Component {
     );
   }
 }
+
+SummitNav.propTypes = {
+  onAnchorUpdate: PropTypes.func.isRequired
+};
 
 function Home() {
   return (
@@ -415,8 +549,8 @@ function Speakers() {
     <div className="speakers-container full-screen-container" id="speakers">
       <Title title="演讲者" />
       <CardDeck className="speakers-cards block-center">
-        {speakers.map((speaker, index) => (
-          <Card className="speaker-item" key={index}>
+        {speakers.map(speaker => (
+          <Card className="speaker-item" key={speaker.id}>
             <Card.Img
               className="summit-speaker-img"
               variant="top"
@@ -425,13 +559,13 @@ function Speakers() {
             <Card.Body>
               <Card.Title className="card-title">{speaker.name}</Card.Title>
               <Card.Text className="card-text">{speaker.speakTitle}</Card.Text>
-              <a className="contact-method-link" href="">
+              {/* <a className="contact-method-link" href="">
                 <FontAwesomeIcon
                   icon={speaker.contactMethod}
                   size="lg"
                   color="lightblue"
                 />
-              </a>
+              </a> */}
             </Card.Body>
           </Card>
         ))}
@@ -456,8 +590,8 @@ function Agenda() {
         size="lg"
       >
         <tbody>
-          {agendaList.map((agenda, index) => (
-            <tr key={index}>
+          {agendaList.map(agenda => (
+            <tr key={agenda.id}>
               <td>{agenda.time}</td>
               <td>{agenda.speakTitle}</td>
               <td>{agenda.speaker}</td>
@@ -477,18 +611,22 @@ function Partners() {
       style={{ minHeight: '100vh' }}
     >
       <Title title="参与者" subTitleColor="#011088" />
-      {partners.map((groupOfOneType, indexA) => {
+      {partners.map(groupOfOneType => {
         const { type } = groupOfOneType;
         return (
-          <section className="margin-top-md" key={indexA}>
+          <section className="margin-top-md" key={groupOfOneType.id}>
             {type ? <h1 className="text-center partner-type">{type}</h1> : null}
             <CardColumns className="partici-group block-center">
-              {groupOfOneType.members.map((item, indexB) => (
+              {groupOfOneType.members.map(member => (
                 <Card
                   className="rounded-lg partner-card text-center"
-                  key={indexB}
+                  key={member.id}
                 >
-                  <Card.Img className="partner-logo" variant="top" src={item} />
+                  <Card.Img
+                    className="partner-logo"
+                    variant="top"
+                    src={member.logo}
+                  />
                 </Card>
               ))}
             </CardColumns>
@@ -516,9 +654,11 @@ class Venue extends Component {
 
   shouldDisplay() {
     const { currentNav } = this.props;
-    return ['agenda', 'partners', 'venue', 'contactus'].findIndex(
-      item => item === currentNav
-    ) !== -1;
+    return (
+      ['agenda', 'partners', 'venue', 'contactus'].findIndex(
+        item => item === currentNav
+      ) !== -1
+    );
   }
 
   render() {
@@ -534,7 +674,7 @@ class Venue extends Component {
         id="venue"
         style={{ minHeight: '100vh' }}
       >
-        {(displayFlag || hasRenderRealComp) ? (
+        {displayFlag || hasRenderRealComp ? (
           <div className="temp-container">
             <Title title="地址" />
             <div style={{ height: '50vh', margin: '100px 0' }}>
@@ -551,16 +691,16 @@ class Venue extends Component {
                   position={this.markerPosition}
                   clickable
                   animation={
-                currentNav === 'venue'
-                  ? 'AMAP_ANIMATION_BOUNCE'
-                  : 'AMAP_ANIMATION_NONE'
-              }
+                    currentNav === 'venue'
+                      ? 'AMAP_ANIMATION_BOUNCE'
+                      : 'AMAP_ANIMATION_NONE'
+                  }
                 />
                 <InfoWindow
                   position={this.markerPosition}
                   offset={[150, -10]}
                   visible
-              // isCustom
+                  // isCustom
                   content="北京市东城区王府井大街57号<br/>北京金茂万丽酒店  xx层xx厅"
                   showShadow
                 />
@@ -579,30 +719,38 @@ class Venue extends Component {
               </Map>
             </div>
           </div>
-        )
-          : null}
+        ) : null}
       </section>
     );
   }
 }
 
-class ContactUs extends Component {
+Venue.propTypes = {
+  currentNav: PropTypes.string.isRequired
+};
+
+class ContactUs extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      activeItem: null,
+      // activeItem: null,
       isModalShow: false
     };
+    this.showModal = this.showModal.bind(this);
   }
 
-  handleMouseOver(activeItem) {
-    this.setState({
-      activeItem
-    });
+  // handleMouseOver(activeItem) {
+  //   this.setState({
+  //     activeItem
+  //   });
+  // }
+
+  showModal() {
+    this.setState({ isModalShow: true });
   }
 
   render() {
-    const { activeItem, isModalShow } = this.state;
+    const { isModalShow } = this.state;
 
     return (
       <div
@@ -661,20 +809,15 @@ class ContactUs extends Component {
           <section className="follow-us-container">
             <p className="follow-word">关注我们</p>
             <ul className="contact-method-group">
-              {contactMethods.map((method, index) => {
+              {contactMethods.map(method => {
                 const { icon, iconSrc, link } = method;
                 return (
                   <li
                     className="contact-method-item"
-                    key={index}
+                    key={method.id}
                     // onMouseOver={this.handleMouseOver.bind(this, method.icon)}
-                    onClick={
-                      method.name === 'wechat'
-                        ? () => {
-                          this.setState({ isModalShow: true });
-                        }
-                        : null
-                    }
+                    onClick={method.name === 'wechat' ? this.showModal : null}
+                    onKeyDown={method.name === 'wechat' ? this.showModal : null}
                   >
                     <a href={link}>
                       {icon ? (
@@ -748,8 +891,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentNav: null
+      currentNav: window.location.hash || 'home'
     };
+    this.onAnchorUpdate = this.onAnchorUpdate.bind(this);
   }
 
   componentDidMount() {
@@ -787,7 +931,7 @@ class App extends Component {
     return (
       <div>
         <div className="index-container">
-          <SummitNav onAnchorUpdate={this.onAnchorUpdate.bind(this)} />
+          <SummitNav onAnchorUpdate={this.onAnchorUpdate} />
           <Home />
           <About />
           <Speakers />
