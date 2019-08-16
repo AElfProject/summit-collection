@@ -116,7 +116,7 @@
 
 .home-container {
   position: relative;
-  background: url('~@img/home-bg.jpg') no-repeat center center;
+  background: url('~@img/home-bg-sm.jpg') no-repeat center center;
   background-size: cover;
   & > * {
     text-align: center;
@@ -367,7 +367,7 @@
 .contact-us-container {
   position: relative;
   height: 100vh;
-  background: url('~@img/contact-us-bg.png') no-repeat center center;
+  background: url('~@img/contact-us-bg-sm.jpg') no-repeat center center;
   background-size: cover;
   // .contact-methods {
   //   position: relative;
@@ -440,12 +440,14 @@
     .navbar-toggler {
       margin-right: 10px;
     }
-    .nav {
+    .navbar-collapse{
       background: rgba(0, 0, 0, 0.25);
-      .nav-item {
-        width: 100%;
-        text-align: center;
-        margin-right: 0;
+      .nav {
+        .nav-item {
+          width: 100%;
+          text-align: center;
+          margin-right: 0;
+        }
       }
     }
   }
@@ -563,5 +565,12 @@
     .img-container {
       margin-bottom: 30px;
     }
+  }
+}
+
+@media (max-width: 320px){
+  .speakers-container .summit-speaker-img{
+    width: 120px;
+    height: 120px;
   }
 }

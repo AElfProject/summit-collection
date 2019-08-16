@@ -295,7 +295,7 @@ class SummitNav extends Component {
             items={navTitleGroup}
             currentClassName="is-current"
             onUpdate={this.handleAnchorUpdate.bind(this)}
-            offset={-1} // use the offset to fix a bug of ScrollSpy
+            offset={-2} // use the offset to fix a bug of ScrollSpy
           >
             {navs.map(nav => (
               <Nav.Item as="li" key={nav.id}>
@@ -558,7 +558,7 @@ class Venue extends Component {
                 />
                 <InfoWindow
                   position={this.markerPosition}
-                  offset={[200, -10]}
+                  offset={[150, -10]}
                   visible
               // isCustom
                   content="北京市东城区王府井大街57号<br/>北京金茂万丽酒店  xx层xx厅"
