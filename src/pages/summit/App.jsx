@@ -403,11 +403,11 @@ class SummitNav extends Component {
     const { currentLang, isCollapsed } = this.state;
 
     return (
-      <Navbar fixed='top' variant='dark' expand='lg'>
-        <div className='logo-container'>
-          <a href='https://aelf.io'>
-            <div className='img-container'>
-              <img src={LOGO} alt='' width='200' />
+      <Navbar fixed="top" variant="dark" expand="lg">
+        <div className="logo-container">
+          <a href="https://aelf.io">
+            <div className="img-container">
+              <img src={LOGO} alt="" width="200" />
             </div>
             {/* <p className="prod-intro">
             Cloud-Powered Public BlockChain for Business
@@ -415,20 +415,20 @@ class SummitNav extends Component {
           </a>
         </div>
         <Navbar.Toggle
-          aria-controls='basic-navbar-nav'
-          data-toggle='collapse'
+          aria-controls="basic-navbar-nav"
+          data-toggle="collapse"
           onClick={this.handleCollapse}
         />
-        <Navbar.Collapse id='basic-navbar-nav' in={isCollapsed}>
+        <Navbar.Collapse id="basic-navbar-nav" in={isCollapsed}>
           <Scrollspy
-            className='nav block-center mr-auto'
+            className="nav block-center mr-auto"
             items={navTitleGroup}
-            currentClassName='is-current'
+            currentClassName="is-current"
             onUpdate={this.handleAnchorUpdate}
             offset={-2} // use the offset to fix a bug of ScrollSpy
           >
             {navs.map(nav => (
-              <Nav.Item as='li' key={nav.id}>
+              <Nav.Item as="li" key={nav.id}>
                 <Translation>
                   {t => (
                     <Nav.Link
@@ -447,14 +447,14 @@ class SummitNav extends Component {
               </Nav.Item>
             ))}
           </Scrollspy>
-          <div className='btn-group'>
+          <div className="btn-group">
             {langs.map((lang, index) => {
               const isActive = currentLang === lang.type;
               return (
-                <span className='btn-container' key={lang.id}>
-                  {index !== 0 ? <span className='slash'>/</span> : null}
+                <span className="btn-container" key={lang.id}>
+                  {index !== 0 ? <span className="slash">/</span> : null}
                   <button
-                    type='button'
+                    type="button"
                     className={`lang-btn ${isActive ? 'selected' : ''}`}
                     disabled={!!isActive}
                     onClick={() => {
@@ -481,24 +481,24 @@ SummitNav.propTypes = {
 function Home() {
   return (
     <div
-      className='home-container block-center-both-flex full-screen-height'
-      id='home'
+      className="home-container block-center-both-flex full-screen-height"
+      id="home"
     >
       {/* <div className="logo-container">
           <img src={LOGO} alt="" width="200" />
         </div> */}
-      <div className='info-container'>
-        <h1 className='summit-title white'>AElf生态峰会</h1>
-        <h1 className='summit-sub-title white'>AElf Summit 2019</h1>
-        <h2 className='summit-slogen white block-center-both-flex'>
+      <div className="info-container">
+        <h1 className="summit-title white">AElf生态峰会</h1>
+        <h1 className="summit-sub-title white">AElf Summit 2019</h1>
+        <h2 className="summit-slogen white block-center-both-flex">
           暨AELF生态基金启动仪式
         </h2>
       </div>
-      <div className='summit-date-position'>
-        <h3 className='date-position-simple-info white'>
+      <div className="summit-date-position">
+        <h3 className="date-position-simple-info white">
           2019-08-18 · 北京金茂万丽酒店
         </h3>
-        <p className='position-detail white'>
+        <p className="position-detail white">
           （北京市东城区王府井大街57号 北京金茂万丽酒店 xx层xx厅）
         </p>
       </div>
@@ -508,10 +508,10 @@ function Home() {
 
 function About() {
   return (
-    <div className='about-container full-screen-height page-padding' id='about'>
-      <p className='bg-words'>ABOUT</p>
-      <p className='side-title'>AELF SUMMIT 2019</p>
-      <h2 className='text-center about-title'>大会简介</h2>
+    <div className="about-container full-screen-height page-padding" id="about">
+      <p className="bg-words">ABOUT</p>
+      <p className="side-title">AELF SUMMIT 2019</p>
+      <h2 className="text-center about-title">大会简介</h2>
       {/* <Card className="bg-dark text-white summit-intro-card">
         <Card.Img className="bg-img" src={LOGO_LG} alt="Card image" />
         <Card.ImgOverlay>
@@ -523,7 +523,7 @@ function About() {
           <Card.Text>Last updated 3 mins ago</Card.Text>
         </Card.ImgOverlay>
       </Card> */}
-      <p className='summit-intro'>
+      <p className="summit-intro">
         This year the summit is specifically crafted to bring developers,
         academic professionals, startups, business decision makers and venture
         capitalists together to collaborate, partner, and build solutions that
@@ -546,19 +546,19 @@ function About() {
 
 function Speakers() {
   return (
-    <div className='speakers-container full-screen-container' id='speakers'>
-      <Title title='演讲者' />
-      <CardDeck className='speakers-cards block-center'>
+    <div className="speakers-container full-screen-container" id="speakers">
+      <Title title="演讲者" />
+      <CardDeck className="speakers-cards block-center">
         {speakers.map(speaker => (
-          <Card className='speaker-item' key={speaker.id}>
+          <Card className="speaker-item" key={speaker.id}>
             <Card.Img
-              className='summit-speaker-img'
-              variant='top'
+              className="summit-speaker-img"
+              variant="top"
               src={SPEAKER}
             />
             <Card.Body>
-              <Card.Title className='card-title'>{speaker.name}</Card.Title>
-              <Card.Text className='card-text'>{speaker.speakTitle}</Card.Text>
+              <Card.Title className="card-title">{speaker.name}</Card.Title>
+              <Card.Text className="card-text">{speaker.speakTitle}</Card.Text>
               {/* <a className="contact-method-link" href="">
                 <FontAwesomeIcon
                   icon={speaker.contactMethod}
@@ -577,17 +577,17 @@ function Speakers() {
 function Agenda() {
   return (
     <div
-      className='agenda-container full-screen-container bg-black text-center'
-      id='agenda'
+      className="agenda-container full-screen-container bg-black text-center"
+      id="agenda"
     >
-      <h1 className='title white'>2019</h1>
-      <h1 className='subtitle white'>大会议程</h1>
+      <h1 className="title white">2019</h1>
+      <h1 className="subtitle white">大会议程</h1>
       <p style={{ textAlign: 'center' }}>（2019 - 08 - 18 14:00 ~ 17:00）</p>
       <Table
-        className='agenda-table block-center'
-        responsive='xl'
-        variant='dark'
-        size='lg'
+        className="agenda-table block-center"
+        responsive="xl"
+        variant="dark"
+        size="lg"
       >
         <tbody>
           {agendaList.map(agenda => (
@@ -606,25 +606,25 @@ function Agenda() {
 function Partners() {
   return (
     <section
-      className='partners-container full-screen-container bg-gray'
-      id='partners'
+      className="partners-container full-screen-container bg-gray"
+      id="partners"
       style={{ minHeight: '100vh' }}
     >
-      <Title title='参与者' subTitleColor='#011088' />
+      <Title title="参与者" subTitleColor="#011088" />
       {partners.map(groupOfOneType => {
         const { type } = groupOfOneType;
         return (
-          <section className='margin-top-md' key={groupOfOneType.id}>
-            {type ? <h1 className='text-center partner-type'>{type}</h1> : null}
-            <CardColumns className='partici-group block-center'>
+          <section className="margin-top-md" key={groupOfOneType.id}>
+            {type ? <h1 className="text-center partner-type">{type}</h1> : null}
+            <CardColumns className="partici-group block-center">
               {groupOfOneType.members.map(member => (
                 <Card
-                  className='rounded-lg partner-card text-center'
+                  className="rounded-lg partner-card text-center"
                   key={member.id}
                 >
                   <Card.Img
-                    className='partner-logo'
-                    variant='top'
+                    className="partner-logo"
+                    variant="top"
                     src={member.logo}
                   />
                 </Card>
@@ -670,21 +670,21 @@ class Venue extends Component {
 
     return (
       <section
-        className='venue-container full-screen-container bg-black'
-        id='venue'
+        className="venue-container full-screen-container bg-black"
+        id="venue"
         style={{ minHeight: '100vh' }}
       >
         {displayFlag || hasRenderRealComp ? (
-          <div className='temp-container'>
-            <Title title='地址' />
+          <div className="temp-container">
+            <Title title="地址" />
             <div style={{ height: '50vh', margin: '100px 0' }}>
               <Map
-                amapkey='788e08def03f95c670944fe2c78fa76f'
+                amapkey="788e08def03f95c670944fe2c78fa76f"
                 plugins={['ToolBar']}
-                mapStyle='amap://styles/grey'
-                viewMode='3D'
-                pitch='45'
-                zoom='18'
+                mapStyle="amap://styles/grey"
+                viewMode="3D"
+                pitch="45"
+                zoom="18"
                 center={this.markerPosition}
               >
                 <Marker
@@ -701,13 +701,13 @@ class Venue extends Component {
                   offset={[150, -10]}
                   visible
                   // isCustom
-                  content='北京市东城区王府井大街57号<br/>北京金茂万丽酒店  xx层xx厅'
+                  content="北京市东城区王府井大街57号<br/>北京金茂万丽酒店  xx层xx厅"
                   showShadow
                 />
                 {isMaskShow ? (
                   <div
-                    className='zoom-tip-mask'
-                    role='presentation'
+                    className="zoom-tip-mask"
+                    role="presentation"
                     onClick={this.handleClick.bind(this)}
                     onKeyDown={this.handleClick.bind(this)}
                   >
@@ -754,8 +754,8 @@ class ContactUs extends PureComponent {
 
     return (
       <div
-        className='contact-us-container block-center-both-flex'
-        id='contactus'
+        className="contact-us-container block-center-both-flex"
+        id="contactus"
       >
         {/* <section className="contact-methods  margin-top-md">
           <ul
@@ -799,21 +799,21 @@ class ContactUs extends PureComponent {
             </div>
           ) : null}
         </section> */}
-        <section className='img-container'>
-          <a href='https://aelf.io'>
-            <img src={LOGO} alt='' />
+        <section className="img-container">
+          <a href="https://aelf.io">
+            <img src={LOGO} alt="" />
           </a>
         </section>
-        <section className='contact-methods-container'>
-          <h1 className='contact-title'>联系我们</h1>
-          <section className='follow-us-container'>
-            <p className='follow-word'>关注我们</p>
-            <ul className='contact-method-group'>
+        <section className="contact-methods-container">
+          <h1 className="contact-title">联系我们</h1>
+          <section className="follow-us-container">
+            <p className="follow-word">关注我们</p>
+            <ul className="contact-method-group">
               {contactMethods.map(method => {
                 const { icon, iconSrc, link } = method;
                 return (
                   <li
-                    className='contact-method-item'
+                    className="contact-method-item"
                     key={method.id}
                     // onMouseOver={this.handleMouseOver.bind(this, method.icon)}
                     onClick={method.name === 'wechat' ? this.showModal : null}
@@ -823,14 +823,14 @@ class ContactUs extends PureComponent {
                       {icon ? (
                         <FontAwesomeIcon
                           icon={icon}
-                          size='3x'
-                          className='social-network-icon'
-                          color='white'
+                          size="3x"
+                          className="social-network-icon"
+                          color="white"
                         />
                       ) : (
                         <img
                           src={iconSrc}
-                          alt=''
+                          alt=""
                           style={{ marginTop: '-20px' }}
                         />
                       )}
@@ -845,17 +845,17 @@ class ContactUs extends PureComponent {
         <Modal
           // {...props}
           show={isModalShow}
-          size='lg'
-          aria-labelledby='contained-modal-title-vcenter'
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
           centered
         >
           {isPC() ? (
             <Modal.Body>
-              <p className='modal-words main-color'>
+              <p className="modal-words main-color">
                 微信搜索“aelf社区”官方微信公众号，获取更多资讯！
               </p>
               <Button
-                className='modal-confirm-btn black-color bg-main-color'
+                className="modal-confirm-btn black-color bg-main-color"
                 onClick={() => {
                   this.setState({ isModalShow: false });
                 }}
@@ -865,14 +865,14 @@ class ContactUs extends PureComponent {
             </Modal.Body>
           ) : (
             <Modal.Body>
-              <div className='img-container'>
-                <img src={WECHAT_QRCODE} alt='' width='180' />
+              <div className="img-container">
+                <img src={WECHAT_QRCODE} alt="" width="180" />
               </div>
-              <p className='modal-words main-color'>
+              <p className="modal-words main-color">
                 扫码关注“aelf社区”官方微信公众号，了解更多资讯！
               </p>
               <Button
-                className='modal-confirm-btn black-color bg-main-color'
+                className="modal-confirm-btn black-color bg-main-color"
                 onClick={() => {
                   this.setState({ isModalShow: false });
                 }}
@@ -930,7 +930,7 @@ class App extends Component {
 
     return (
       <div>
-        <div className='index-container'>
+        <div className="index-container">
           <SummitNav onAnchorUpdate={this.onAnchorUpdate} />
           <Home />
           <About />
