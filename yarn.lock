@@ -7229,7 +7229,7 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-puppeteer@^1.8.0:
+puppeteer@^1.19.0, puppeteer@^1.8.0:
   version "1.19.0"
   resolved "https://registry.npm.taobao.org/puppeteer/download/puppeteer-1.19.0.tgz#e3b7b448c2c97933517078d7a2c53687361bebea"
   integrity sha1-47e0SMLJeTNRcHjXosU2hzYb6+o=
