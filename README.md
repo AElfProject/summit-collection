@@ -1,24 +1,33 @@
-# summit-collection
+<!--  
+ * @Author: Alfred Yang  
+ * @Github: https://github.com/cat-walk  
+ * @Date: 2019-08-09 00:57:45  
+ * @LastEditors: Alfred Yang
+ * @LastEditTime: 2019-08-19 15:17:03
+ * @Description: file content  
+ -->  
 
-all summit support website
+# summit-collection  
 
-## Install
+all summit support website  
 
-`sudo yarn install`
-If you hav install the puppeteer in the project, you can skip the puppeteer's download by run as follows:
-`sudo env PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true yarn install`
-Tips:
+## Install  
 
-1. If you aren't linux user you may also need to download rename with brew
-2. If `sudo yarn install` get stuck when download 'puppeteer' you can try to change the mirror of Chrominum following the code below:
+`sudo yarn install`  
+If you hav install the puppeteer in the project, you can skip the puppeteer's download by run as follows:  
+`sudo env PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true yarn install`  
+Tips:  
 
-```sh
-sudo PUPPETEER_DOWNLOAD_HOST=https://storage.googleapis.com.cnpmjs.org cnpm i puppeteer -D
-```
+1. If you aren't linux user you may also need to download rename with brew  
+2. If `sudo yarn install` get stuck when download 'puppeteer' you can try to change the mirror of Chrominum following the code below:  
 
-3. Lastly, if 2 don't work for you, you can try:
+```sh  
+vi .npmrc  
+type puppeteer_download_host = https://storage.googleapis.com.cnpmjs.org  
+```  
 
-```sh
-vi .npmrc
-type puppeteer_download_host = https://npm.taobao.org/mirrors
-```
+3. Lastly, if 2 don't work for you, you can try:  
+
+```sh  
+sudo PUPPETEER_DOWNLOAD_HOST=https://storage.googleapis.com.cnpmjs.org cnpm i puppeteer -D  
+```  
