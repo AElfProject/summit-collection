@@ -111,96 +111,6 @@
   }
 }
 
-.speakers-container {
-  background: #000;
-  min-height: 100vh;
-  .summit-speaker-img {
-    width: 150px;
-    height: 150px;
-    background: gray;
-  }
-  .speakers-cards {
-    width: 80%;
-    margin-top: 40px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    .speaker-item {
-      padding: 10px;
-      padding-bottom: 0;
-      border-radius: 3px;
-      overflow: hidden;
-      font-style: italic;
-      .card-body {
-        padding: 0.5rem 0;
-      }
-      .card-title {
-        font-weight: 400;
-      }
-      .card-text {
-        width: 85%;
-        font-weight: bold;
-        color: #000;
-      }
-      .contact-method-link {
-        position: absolute;
-        right: 1vw;
-        bottom: 4.5vw;
-      }
-    }
-  }
-}
-
-.agenda-container {
-  min-height: 100vh;
-  padding-bottom: 3vh;
-  .title {
-    position: relative;
-    display: inline-block;
-    font-size: 7vw;
-    &:after {
-      content: 'AELF SUMMIT';
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      font-size: 1vw;
-      color: @themeColor;
-    }
-  }
-  .subtitle {
-    margin-top: 5vh;
-  }
-  .agenda-table {
-    width: 60%;
-    tr {
-      > td {
-        text-align: center;
-        vertical-align: middle;
-        width: 40%;
-        &:first-child,
-        &:last-child {
-          width: 30%;
-        }
-      }
-      &:nth-child(2n + 1) {
-        > td {
-          background: #292929;
-          &:first-child {
-            background: linear-gradient(to left, #02f3fc, #0243fb);
-          }
-        }
-      }
-      &:nth-child(2n) {
-        > td {
-          background: #000;
-          &:first-child {
-            background: linear-gradient(to left, #017a7e, #01227e);
-          }
-        }
-      }
-    }
-  }
-}
-
 .partners-container {
   .partner-type {
     margin-bottom: 5vh;
@@ -359,27 +269,6 @@
   .full-screen-container {
     padding: 30px 0;
   }
-  .agenda-container {
-    .agenda-table {
-      width: 90%;
-    }
-    .title {
-      font-size: 20vw;
-    }
-  }
-
-  .speakers-container {
-    .speakers-cards {
-      width: 95%;
-      .speaker-item {
-        box-sizing: border-box;
-        width: 47%;
-        &:nth-child(2n + 1) {
-          margin-right: 4%;
-        }
-      }
-    }
-  }
   .partners-container {
     .partici-group {
       width: 90%;
@@ -452,12 +341,5 @@
     .img-container {
       margin-bottom: 30px;
     }
-  }
-}
-
-@media (max-width: 320px) {
-  .speakers-container .summit-speaker-img {
-    width: 120px;
-    height: 120px;
   }
 }

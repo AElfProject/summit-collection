@@ -9,9 +9,7 @@ import 'minireset.css/minireset.min.css';
 import '@public/css/bootstrap.min.css'; // bootstrap css with custom theme, eg font-family...
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Table from 'react-bootstrap/Table';
 import Card from 'react-bootstrap/Card';
-import CardDeck from 'react-bootstrap/CardDeck';
 import CardColumns from 'react-bootstrap/CardColumns';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -37,7 +35,6 @@ import { Translation } from 'react-i18next';
 
 import './index.less';
 import LOGO from '@img/logo.png';
-import SPEAKER from '@img/speaker.png';
 import PARTNER_LOGO from '@img/partner-logo.png';
 import WECHAT_QRCODE from '@img/wechat-qrcode-sm.jpg';
 import BIYONG_ICON from '@img/biyong-icon.jpg';
@@ -49,6 +46,8 @@ import i18n from './i18n';
 // const { Map, Marker, InfoWindow } = ReactAmap;
 import Home from './Home';
 import About from './About';
+import Speakers from './Speakers';
+import Agenda from './Agenda';
 
 library.add(
   faFacebook,
@@ -95,84 +94,6 @@ const navs = [
 ];
 
 const navTitleGroup = navs.map(item => item.title.toLocaleLowerCase());
-
-const speakers = [
-  {
-    id: 1,
-    name: 'alex',
-    speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
-    contactMethod: ['fab', 'facebook']
-  },
-  {
-    id: 2,
-    name: 'alex',
-    speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
-    contactMethod: ['fab', 'facebook']
-  },
-  {
-    id: 3,
-    name: 'alex',
-    speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
-    contactMethod: ['fab', 'facebook']
-  },
-  {
-    id: 4,
-    name: 'alex',
-    speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
-    contactMethod: ['fab', 'facebook']
-  },
-  {
-    id: 5,
-    name: 'alex',
-    speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
-    contactMethod: ['fab', 'facebook']
-  },
-  {
-    id: 6,
-    name: 'alex',
-    speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
-    contactMethod: ['fab', 'facebook']
-  }
-];
-
-const agendaList = [
-  {
-    id: 1,
-    time: '14:00-17:00',
-    speakTitle: 'AElf是如何实现高Tps的',
-    speaker: '马昊博（XXXXX）'
-  },
-  {
-    id: 2,
-    time: '14:00-17:00',
-    speakTitle: 'AElf是如何实现高Tps的',
-    speaker: '马昊博（XXXXX）'
-  },
-  {
-    id: 3,
-    time: '14:00-17:00',
-    speakTitle: 'AElf是如何实现高Tps的',
-    speaker: '马昊博（XXXXX）'
-  },
-  {
-    id: 4,
-    time: '14:00-17:00',
-    speakTitle: 'AElf是如何实现高Tps的',
-    speaker: '马昊博（XXXXX）'
-  },
-  {
-    id: 5,
-    time: '14:00-17:00',
-    speakTitle: 'AElf是如何实现高Tps的',
-    speaker: '马昊博（XXXXX）'
-  },
-  {
-    id: 6,
-    time: '14:00-17:00',
-    speakTitle: 'AElf是如何实现高Tps的',
-    speaker: '马昊博（XXXXX）'
-  }
-];
 
 const partners = [
   {
@@ -479,65 +400,6 @@ class SummitNav extends PureComponent {
 SummitNav.propTypes = {
   onAnchorUpdate: PropTypes.func.isRequired
 };
-
-function Speakers() {
-  return (
-    <div className="speakers-container full-screen-container" id="speakers">
-      <Title title="演讲者" />
-      <CardDeck className="speakers-cards block-center">
-        {speakers.map(speaker => (
-          <Card className="speaker-item" key={speaker.id}>
-            <Card.Img
-              className="summit-speaker-img"
-              variant="top"
-              src={SPEAKER}
-            />
-            <Card.Body>
-              <Card.Title className="card-title">{speaker.name}</Card.Title>
-              <Card.Text className="card-text">{speaker.speakTitle}</Card.Text>
-              {/* <a className="contact-method-link" href="">
-                <FontAwesomeIcon
-                  icon={speaker.contactMethod}
-                  size="lg"
-                  color="lightblue"
-                />
-              </a> */}
-            </Card.Body>
-          </Card>
-        ))}
-      </CardDeck>
-    </div>
-  );
-}
-
-function Agenda() {
-  return (
-    <div
-      className="agenda-container full-screen-container bg-black text-center"
-      id="agenda"
-    >
-      <h1 className="title white">2019</h1>
-      <h1 className="subtitle white">大会议程</h1>
-      <p style={{ textAlign: 'center' }}>（2019 - 08 - 18 14:00 ~ 17:00）</p>
-      <Table
-        className="agenda-table block-center"
-        responsive="xl"
-        variant="dark"
-        size="lg"
-      >
-        <tbody>
-          {agendaList.map(agenda => (
-            <tr key={agenda.id}>
-              <td>{agenda.time}</td>
-              <td>{agenda.speakTitle}</td>
-              <td>{agenda.speaker}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </div>
-  );
-}
 
 function Partners() {
   return (

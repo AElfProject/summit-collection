@@ -1,0 +1,60 @@
+.speakers-container {
+  background: #000;
+  min-height: 100vh;
+  .summit-speaker-img {
+    width: 150px;
+    height: 150px;
+    background: gray;
+  }
+  .speakers-cards {
+    width: 80%;
+    margin-top: 40px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .speaker-item {
+      padding: 10px;
+      padding-bottom: 0;
+      border-radius: 3px;
+      overflow: hidden;
+      font-style: italic;
+      .card-body {
+        padding: 0.5rem 0;
+      }
+      .card-title {
+        font-weight: 400;
+      }
+      .card-text {
+        width: 85%;
+        font-weight: bold;
+        color: #000;
+      }
+      .contact-method-link {
+        position: absolute;
+        right: 1vw;
+        bottom: 4.5vw;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .speakers-container {
+    .speakers-cards {
+      width: 95%;
+      .speaker-item {
+        box-sizing: border-box;
+        width: 47%;
+        &:nth-child(2n + 1) {
+          margin-right: 4%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .speakers-container .summit-speaker-img {
+    width: 120px;
+    height: 120px;
+  }
+}
