@@ -10,7 +10,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { ROOT, OUTPUT_PATH, isProdMode, ENTRIES, PAGES } = require('./util');
+const {
+  ROOT,
+  OUTPUT_PATH,
+  isProdMode,
+  ENTRIES,
+  PAGES,
+  getLessVariables
+} = require('./util');
 
 const copies = [];
 
@@ -51,7 +58,10 @@ const baseConfig = {
             loader: 'less-loader',
             options: {
               javascriptEnabled: true,
-              modifyVars: {}
+              modifyVars: {},
+              globalVars: getLessVariables(
+                path.resolve(ROOT, 'src/style/globalVariables.less')
+              )
             }
           }
         ]
