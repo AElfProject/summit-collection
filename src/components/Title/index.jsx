@@ -7,7 +7,7 @@ export default function Title(props) {
   return (
     <section className="page-title-container">
       <p className="page-subtitle" style={{ color: subTitleColor }}>
-        AELF SUMMIT 2019
+        XXXX XXXX XXXX 
       </p>
       <h1 className="page-title">{title}</h1>
     </section>

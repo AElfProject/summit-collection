@@ -11,10 +11,10 @@ export default function Home() {
           <img src={LOGO} alt="" width="200" />
         </div> */}
       <div className="info-container">
-        <h1 className="summit-title white">AElf生态峰会</h1>
-        <h1 className="summit-sub-title white">AElf Summit 2019</h1>
+        <h1 className="summit-title white">xxxxxxxx</h1>
+        <h1 className="summit-sub-title white">XXXX XXXX XXXX</h1>
         <h2 className="summit-slogen white block-center-both-flex">
-          暨AELF生态基金启动仪式
+          xxxxxxxxxxxxxxx
         </h2>
       </div>
       <div className="summit-date-position">

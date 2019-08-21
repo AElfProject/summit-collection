@@ -273,7 +273,7 @@ SummitNav.propTypes = {
 class Venue extends PureComponent {
   constructor(props) {
     super(props);
-    this.markerPosition = { longitude: 116.410027, latitude: 39.921232 };
+    this.markerPosition = { longitude: 115.410027, latitude: 30.921232 };
     this.state = {
       isMaskShow: true
     };
@@ -309,7 +309,7 @@ class Venue extends PureComponent {
       >
         {displayFlag || hasRenderRealComp ? (
           <div className="temp-container">
-            <Title title="地址" />
+            <Title title="XX" />
             <div style={{ height: '50vh', margin: '100px 0' }}>
               <Map
                 amapkey="788e08def03f95c670944fe2c78fa76f"
@@ -334,7 +334,7 @@ class Venue extends PureComponent {
                   offset={[150, -10]}
                   visible
                   // isCustom
-                  content="北京市东城区王府井大街57号<br/>北京金茂万丽酒店  xx层xx厅"
+                  content="XXXXXXXXXXXX<br/>XXXXXXXX"
                   showShadow
                 />
                 {isMaskShow ? (

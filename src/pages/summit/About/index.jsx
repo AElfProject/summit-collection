@@ -5,7 +5,7 @@ export default function About() {
   return (
     <div className="about-container full-screen-height page-padding" id="about">
       <p className="bg-words">ABOUT</p>
-      <p className="side-title">AELF SUMMIT 2019</p>
+      <p className="side-title">XXXX XXXX XXXX </p>
       <h2 className="text-center about-title">大会简介</h2>
       {/* <Card className="bg-dark text-white summit-intro-card">
         <Card.Img className="bg-img" src={LOGO_LG} alt="Card image" />
@@ -19,13 +19,9 @@ export default function About() {
         </Card.ImgOverlay>
       </Card> */}
       <p className="summit-intro">
-        This year the summit is specifically crafted to bring developers,
-        academic professionals, startups, business decision makers and venture
-        capitalists together to collaborate, partner, and build solutions that
-        create valuable transactions on the VeChainThor Blockchain. releases,
-        expertise and insights sharing, interactive tutorials as well as
-        immersive entertainment, VeChain Summit 2019 will provide the
-        participants with a unique blockchain technology adventure.
+        XXXX XXXX XXXX XXXXXXXXX XXXX XXXX XXXXXXXXX XXXX XXXX XXXXXXXXX XXXX
+        XXXX XXXXXXXXX XXXX XXXX XXXXXXXXX XXXX XXXX XXXXXXXXX XXXX XXXX
+        XXXXXXXXX XXXX XXXX XXXXX
       </p>
       {/* <section className="charact-group-container">
         {['特色1', '特色2', '特色3'].map((charact, index) => (

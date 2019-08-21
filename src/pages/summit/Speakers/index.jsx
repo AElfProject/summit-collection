@@ -3,44 +3,44 @@ import CardDeck from 'react-bootstrap/CardDeck';
 import Card from 'react-bootstrap/Card';
 
 import Title from '@components/Title/';
-import SPEAKER from '@img/speaker.png';
+import SPEAKER from '@img/logo.jpg';
 import './index.less';
 
 const speakers = [
   {
     id: 1,
-    name: 'alex',
-    speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
+    name: 'xxxx',
+    speakTitle: 'xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx ',
     contactMethod: ['fab', 'facebook']
   },
   {
     id: 2,
-    name: 'alex',
-    speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
+    name: 'xxxx',
+    speakTitle: 'xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx ',
     contactMethod: ['fab', 'facebook']
   },
   {
     id: 3,
-    name: 'alex',
-    speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
+    name: 'xxxx',
+    speakTitle: 'xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx ',
     contactMethod: ['fab', 'facebook']
   },
   {
     id: 4,
-    name: 'alex',
-    speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
+    name: 'xxxx',
+    speakTitle: 'xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx ',
     contactMethod: ['fab', 'facebook']
   },
   {
     id: 5,
-    name: 'alex',
-    speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
+    name: 'xxxx',
+    speakTitle: 'xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx ',
     contactMethod: ['fab', 'facebook']
   },
   {
     id: 6,
-    name: 'alex',
-    speakTitle: 'Leader at IT Tech Office Singapore, BMW Group',
+    name: 'xxxx',
+    speakTitle: 'xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx ',
     contactMethod: ['fab', 'facebook']
   }
 ];

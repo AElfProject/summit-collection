@@ -6,39 +6,39 @@ import './index.less';
 const agendaList = [
   {
     id: 1,
-    time: '14:00-17:00',
-    speakTitle: 'AElf是如何实现高Tps的',
-    speaker: '马昊博（XXXXX）'
+    time: 'XX:XX-XX:XX',
+    speakTitle: 'XXXXXXXXXX',
+    speaker: 'xxxxxxxx'
   },
   {
     id: 2,
-    time: '14:00-17:00',
-    speakTitle: 'AElf是如何实现高Tps的',
-    speaker: '马昊博（XXXXX）'
+    time: 'XX:XX-XX:XX',
+    speakTitle: 'XXXXXXXXXX',
+    speaker: 'xxxxxxxx'
   },
   {
     id: 3,
-    time: '14:00-17:00',
-    speakTitle: 'AElf是如何实现高Tps的',
-    speaker: '马昊博（XXXXX）'
+    time: 'XX:XX-XX:XX',
+    speakTitle: 'XXXXXXXXXX',
+    speaker: 'xxxxxxxx'
   },
   {
     id: 4,
-    time: '14:00-17:00',
-    speakTitle: 'AElf是如何实现高Tps的',
-    speaker: '马昊博（XXXXX）'
+    time: 'XX:XX-XX:XX',
+    speakTitle: 'XXXXXXXXXX',
+    speaker: 'xxxxxxxx'
   },
   {
     id: 5,
-    time: '14:00-17:00',
-    speakTitle: 'AElf是如何实现高Tps的',
-    speaker: '马昊博（XXXXX）'
+    time: 'XX:XX-XX:XX',
+    speakTitle: 'XXXXXXXXXX',
+    speaker: 'xxxxxxxx'
   },
   {
     id: 6,
-    time: '14:00-17:00',
-    speakTitle: 'AElf是如何实现高Tps的',
-    speaker: '马昊博（XXXXX）'
+    time: 'XX:XX-XX:XX',
+    speakTitle: 'XXXXXXXXXX',
+    speaker: 'xxxxxxxx'
   }
 ];
 
@@ -48,9 +48,9 @@ export default function Agenda() {
       className="agenda-container full-screen-container bg-black text-center"
       id="agenda"
     >
-      <h1 className="title white">2019</h1>
-      <h1 className="subtitle white">大会议程</h1>
-      <p style={{ textAlign: 'center' }}>（2019 - 08 - 18 14:00 ~ 17:00）</p>
+      <h1 className="title white">XXXX</h1>
+      <h1 className="subtitle white">XXXX</h1>
+      <p style={{ textAlign: 'center' }}>（XXXX - XXXX - XX - XX）</p>
       <Table
         className="agenda-table block-center"
         responsive="xl"

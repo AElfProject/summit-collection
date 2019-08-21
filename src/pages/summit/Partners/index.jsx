@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import CardColumns from 'react-bootstrap/CardColumns';
 
 import Title from '@components/Title/';
-import PARTNER_LOGO from '@img/partner-logo.png';
+import PARTNER_LOGO from '@img/logo.jpg';
 import './index.less';
 
 const partners = [
@@ -51,7 +51,7 @@ const partners = [
   },
   {
     id: 2,
-    type: '媒体',
+    type: 'XX',
     members: [
       {
         id: 1,
@@ -93,7 +93,7 @@ const partners = [
   },
   {
     id: 3,
-    type: '社区支持',
+    type: 'XXXX',
     members: [
       {
         id: 1,
@@ -142,7 +142,7 @@ export default function Partners() {
       id="partners"
       style={{ minHeight: '100vh' }}
     >
-      <Title title="参与者" subTitleColor="#011088" />
+      <Title title="XXX" subTitleColor="#011088" />
       {partners.map(groupOfOneType => {
         const { type } = groupOfOneType;
         return (
