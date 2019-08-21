@@ -303,9 +303,8 @@ class Venue extends PureComponent {
 
     return (
       <section
-        className="venue-container full-screen-container bg-black"
+        className="venue-container full-screen-container bg-black one-screen-height"
         id="venue"
-        style={{ minHeight: '100vh' }}
       >
         {displayFlag || hasRenderRealComp ? (
           <div className="temp-container">
@@ -387,7 +386,7 @@ class ContactUs extends PureComponent {
 
     return (
       <div
-        className="contact-us-container block-center-both-flex"
+        className="contact-us-container block-center-both-flex one-screen-height"
         id="contactus"
       >
         {/* <section className="contact-methods  margin-top-md">

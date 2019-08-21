@@ -45,7 +45,7 @@ const agendaList = [
 export default function Agenda() {
   return (
     <div
-      className="agenda-container full-screen-container bg-black text-center"
+      className="agenda-container full-screen-container bg-black text-center at-least-one-screen"
       id="agenda"
     >
       <h1 className="title white">XXXX</h1>

@@ -3,7 +3,7 @@ import './index.less';
 
 export default function About() {
   return (
-    <div className="about-container full-screen-height page-padding" id="about">
+    <div className="about-container one-screen-height page-padding" id="about">
       <p className="bg-words">ABOUT</p>
       <p className="side-title">XXXX XXXX XXXX </p>
       <h2 className="text-center about-title">大会简介</h2>

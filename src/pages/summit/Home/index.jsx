@@ -4,7 +4,7 @@ import './index.less';
 export default function Home() {
   return (
     <div
-      className="home-container block-center-both-flex full-screen-height"
+      className="home-container block-center-both-flex one-screen-height"
       id="home"
     >
       {/* <div className="logo-container">

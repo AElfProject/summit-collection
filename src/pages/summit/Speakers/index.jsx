@@ -47,7 +47,7 @@ const speakers = [
 
 export default function Speakers() {
   return (
-    <div className="speakers-container full-screen-container" id="speakers">
+    <div className="speakers-container full-screen-container at-least-one-screen" id="speakers">
       <Title title="演讲者" />
       <CardDeck className="speakers-cards block-center">
         {speakers.map(speaker => (

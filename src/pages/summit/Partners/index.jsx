@@ -138,9 +138,8 @@ const partners = [
 export default function Partners() {
   return (
     <section
-      className="partners-container full-screen-container bg-gray"
+      className="partners-container full-screen-container bg-gray at-least-one-screen"
       id="partners"
-      style={{ minHeight: '100vh' }}
     >
       <Title title="XXX" subTitleColor="#011088" />
       {partners.map(groupOfOneType => {
