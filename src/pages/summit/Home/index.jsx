@@ -19,10 +19,10 @@ export default function Home() {
       </div>
       <div className="summit-date-position">
         <h3 className="date-position-simple-info white">
-          2019-08-18 · 北京金茂万丽酒店
+          xxxx-xx-xx · 地点
         </h3>
         <p className="position-detail white">
-          （北京市东城区王府井大街57号 北京金茂万丽酒店 xx层xx厅）
+          （地点详情）
         </p>
       </div>
     </div>
