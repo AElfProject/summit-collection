@@ -1,4 +1,5 @@
 import React from 'react';
+
 import 'minireset.css/minireset.min.css';
 import './index.less';
 import CopyRight from '@components/CopyRight/';
@@ -14,4 +15,4 @@ function Repairing() {
   );
 }
 
-export default Repairing;
+export default React.memo(Repairing);

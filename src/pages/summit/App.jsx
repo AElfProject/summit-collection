@@ -1,8 +1,12 @@
-/**
- * @file App.jsx
- * @author atom-yang
+/*
+ * @Author: atom-yang, Alfred Yang
+ * @Github: https://github.com/cat-walk
+ * @Date: 2019-08-17 23:33:03
+ * @LastEditors: Alfred Yang
+ * @LastEditTime: 2019-08-21 21:01:57
+ * @Description: file content
  */
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css'; // default bootstrap css
 import 'minireset.css/minireset.min.css';
 import '@public/css/bootstrap.min.css'; // bootstrap css with custom theme, eg font-family...
@@ -21,7 +25,10 @@ import Venue from './Venue';
 import ContactUs from './ContactUs';
 import SummitNav, { navTitleGroup } from './SummitNav';
 
-class App extends Component {
+// PureComponent's children component must be pure too
+// It requests children to be PureComponent or FunctionComponent after memo
+// At here, the children components of App fullfil the requirement
+class App extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

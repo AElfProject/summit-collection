@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.less';
 
-export default function Home() {
+function Home() {
   return (
     <div
       className="home-container block-center-both-flex one-screen-height"
@@ -18,13 +18,11 @@ export default function Home() {
         </h2>
       </div>
       <div className="summit-date-position">
-        <h3 className="date-position-simple-info white">
-          xxxx-xx-xx · 地点
-        </h3>
-        <p className="position-detail white">
-          （地点详情）
-        </p>
+        <h3 className="date-position-simple-info white">xxxx-xx-xx · 地点</h3>
+        <p className="position-detail white">（地点详情）</p>
       </div>
     </div>
   );
 }
+
+export default React.memo(Home);

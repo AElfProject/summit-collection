@@ -11,4 +11,4 @@ function CopyRight() {
   );
 }
 
-export default CopyRight;
+export default React.memo(CopyRight);

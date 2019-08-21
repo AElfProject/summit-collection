@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.less';
 
-export default function About() {
+function About() {
   return (
     <div className="about-container one-screen-height page-padding" id="about">
       <p className="bg-words">ABOUT</p>
@@ -34,3 +34,5 @@ export default function About() {
     </div>
   );
 }
+
+export default React.memo(About);

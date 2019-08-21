@@ -42,7 +42,7 @@ const agendaList = [
   }
 ];
 
-export default function Agenda() {
+function Agenda() {
   return (
     <div
       className="agenda-container full-screen-container bg-black text-center at-least-one-screen"
@@ -70,3 +70,5 @@ export default function Agenda() {
     </div>
   );
 }
+
+export default React.memo(Agenda);

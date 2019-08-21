@@ -135,7 +135,7 @@ const partners = [
   }
 ];
 
-export default function Partners() {
+function Partners() {
   return (
     <section
       className="partners-container full-screen-container bg-gray at-least-one-screen"
@@ -167,3 +167,5 @@ export default function Partners() {
     </section>
   );
 }
+
+export default React.memo(Partners);

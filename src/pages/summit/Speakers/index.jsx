@@ -45,9 +45,12 @@ const speakers = [
   }
 ];
 
-export default function Speakers() {
+function Speakers() {
   return (
-    <div className="speakers-container full-screen-container at-least-one-screen" id="speakers">
+    <div
+      className="speakers-container full-screen-container at-least-one-screen"
+      id="speakers"
+    >
       <Title title="演讲者" />
       <CardDeck className="speakers-cards block-center">
         {speakers.map(speaker => (
@@ -74,3 +77,5 @@ export default function Speakers() {
     </div>
   );
 }
+
+export default React.memo(Speakers);
