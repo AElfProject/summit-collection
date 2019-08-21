@@ -9,8 +9,6 @@ import 'minireset.css/minireset.min.css';
 import '@public/css/bootstrap.min.css'; // bootstrap css with custom theme, eg font-family...
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Card from 'react-bootstrap/Card';
-import CardColumns from 'react-bootstrap/CardColumns';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { Map, Marker, InfoWindow } from 'react-amap';
@@ -35,7 +33,6 @@ import { Translation } from 'react-i18next';
 
 import './index.less';
 import LOGO from '@img/logo.png';
-import PARTNER_LOGO from '@img/partner-logo.png';
 import WECHAT_QRCODE from '@img/wechat-qrcode-sm.jpg';
 import BIYONG_ICON from '@img/biyong-icon.jpg';
 import Title from '@components/Title/';
@@ -48,6 +45,7 @@ import Home from './Home';
 import About from './About';
 import Speakers from './Speakers';
 import Agenda from './Agenda';
+import Partners from './Partners';
 
 library.add(
   faFacebook,
@@ -94,135 +92,6 @@ const navs = [
 ];
 
 const navTitleGroup = navs.map(item => item.title.toLocaleLowerCase());
-
-const partners = [
-  {
-    id: 1,
-    type: null,
-    members: [
-      {
-        id: 1,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 2,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 3,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 4,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 5,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 6,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 7,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 8,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 9,
-        logo: PARTNER_LOGO
-      }
-    ]
-  },
-  {
-    id: 2,
-    type: '媒体',
-    members: [
-      {
-        id: 1,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 2,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 3,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 4,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 5,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 6,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 7,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 8,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 9,
-        logo: PARTNER_LOGO
-      }
-    ]
-  },
-  {
-    id: 3,
-    type: '社区支持',
-    members: [
-      {
-        id: 1,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 2,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 3,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 4,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 5,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 6,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 7,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 8,
-        logo: PARTNER_LOGO
-      },
-      {
-        id: 9,
-        logo: PARTNER_LOGO
-      }
-    ]
-  }
-];
 
 const contactMethods = [
   {
@@ -400,40 +269,6 @@ class SummitNav extends PureComponent {
 SummitNav.propTypes = {
   onAnchorUpdate: PropTypes.func.isRequired
 };
-
-function Partners() {
-  return (
-    <section
-      className="partners-container full-screen-container bg-gray"
-      id="partners"
-      style={{ minHeight: '100vh' }}
-    >
-      <Title title="参与者" subTitleColor="#011088" />
-      {partners.map(groupOfOneType => {
-        const { type } = groupOfOneType;
-        return (
-          <section className="margin-top-md" key={groupOfOneType.id}>
-            {type ? <h1 className="text-center partner-type">{type}</h1> : null}
-            <CardColumns className="partici-group block-center">
-              {groupOfOneType.members.map(member => (
-                <Card
-                  className="rounded-lg partner-card text-center"
-                  key={member.id}
-                >
-                  <Card.Img
-                    className="partner-logo"
-                    variant="top"
-                    src={member.logo}
-                  />
-                </Card>
-              ))}
-            </CardColumns>
-          </section>
-        );
-      })}
-    </section>
-  );
-}
 
 class Venue extends PureComponent {
   constructor(props) {
