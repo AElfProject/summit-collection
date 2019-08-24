@@ -3,7 +3,7 @@
  * @Github: https://github.com/cat-walk
  * @Date: 2019-08-17 23:33:03
  * @LastEditors: Alfred Yang
- * @LastEditTime: 2019-08-21 21:01:57
+ * @LastEditTime: 2019-08-24 11:52:46
  * @Description: file content
  */
 import React, { PureComponent } from 'react';
@@ -50,6 +50,7 @@ class App extends PureComponent {
     }
   }
 
+  // Prepare for future use
   handleScroll(e) {
     const { currentNav } = this.state;
 
