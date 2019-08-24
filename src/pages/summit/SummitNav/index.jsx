@@ -64,6 +64,7 @@ export default class SummitNav extends PureComponent {
     };
     this.handleCollapse = this.handleCollapse.bind(this);
     this.handleAnchorUpdate = this.handleAnchorUpdate.bind(this);
+    this.handleChangeLang = this.handleChangeLang.bind(this);
   }
 
   handleAnchorUpdate(ele) {
@@ -74,6 +75,11 @@ export default class SummitNav extends PureComponent {
   handleCollapse() {
     const { isCollapsed } = this.state;
     this.setState({ isCollapsed: !isCollapsed });
+  }
+
+  handleChangeLang(lang) {
+    i18n.changeLanguage(lang.type);
+    this.setState({ currentLang: lang.type });
   }
 
   render() {
@@ -135,8 +141,7 @@ export default class SummitNav extends PureComponent {
                     className={`lang-btn ${isActive ? 'selected' : ''}`}
                     disabled={!!isActive}
                     onClick={() => {
-                      i18n.changeLanguage(lang.type);
-                      this.setState({ currentLang: lang.type });
+                      this.handleChangeLang(lang);
                     }}
                   >
                     {lang.displayName}

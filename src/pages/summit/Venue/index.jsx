@@ -17,6 +17,7 @@ export default class Venue extends PureComponent {
     };
     this.hasRenderRealComp = false;
     this.shouldDisplay = this.shouldDisplay.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
@@ -78,8 +79,8 @@ export default class Venue extends PureComponent {
                   <div
                     className="zoom-tip-mask"
                     role="presentation"
-                    onClick={this.handleClick.bind(this)}
-                    onKeyDown={this.handleClick.bind(this)}
+                    onClick={this.handleClick}
+                    onKeyDown={this.handleClick}
                   >
                     {isMac()
                       ? '使用双指移动地图'

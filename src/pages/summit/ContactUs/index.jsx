@@ -81,7 +81,7 @@ export default class ContactUs extends PureComponent {
       // activeItem: null,
       isModalShow: false
     };
-    this.showModal = this.showModal.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   // handleMouseOver(activeItem) {
@@ -90,8 +90,8 @@ export default class ContactUs extends PureComponent {
   //   });
   // }
 
-  showModal() {
-    this.setState({ isModalShow: true });
+  toggleModal(status) {
+    this.setState({ isModalShow: status });
   }
 
   render() {
@@ -161,8 +161,16 @@ export default class ContactUs extends PureComponent {
                     className="contact-method-item"
                     key={method.id}
                     // onMouseOver={this.handleMouseOver.bind(this, method.icon)}
-                    onClick={method.name === 'wechat' ? this.showModal : null}
-                    onKeyDown={method.name === 'wechat' ? this.showModal : null}
+                    onClick={
+                      method.name === 'wechat'
+                        ? this.toggleModal.bind(this, true)
+                        : null
+                    }
+                    onKeyDown={
+                      method.name === 'wechat'
+                        ? this.toggleModal.bind(this, true)
+                        : null
+                    }
                   >
                     <a href={link}>
                       {icon ? (
@@ -202,7 +210,7 @@ export default class ContactUs extends PureComponent {
               <Button
                 className="modal-confirm-btn black-color bg-main-color"
                 onClick={() => {
-                  this.setState({ isModalShow: false });
+                  this.toggleModal(false);
                 }}
               >
                 确认
@@ -219,7 +227,7 @@ export default class ContactUs extends PureComponent {
               <Button
                 className="modal-confirm-btn black-color bg-main-color"
                 onClick={() => {
-                  this.setState({ isModalShow: false });
+                  this.toggleModal(false);
                 }}
               >
                 确认
